@@ -86,22 +86,22 @@ class lwp_system
         // Define your credit packages including a smaller starter package
         $packages = [
             [
-                'credits'     => 20,
-                'price'       => 5,
+                'credits'     => 80,
+                'price'       => 7,
                 'description' => __('Starter package for trying our WhatsApp OTP service.', 'login-with-phone-number'),
-                'buy_url'     => 'https://idehweb.com/product/20-whatsapp-otp-credits/',
+                'buy_url'     => 'https://idehweb.com/product/80-whatsapp-otp-credits/',
             ],
             [
-                'credits'     => 100,
-                'price'       => 10,
+                'credits'     => 400,
+                'price'       => 12,
                 'description' => __('Perfect for small businesses needing occasional OTPs.', 'login-with-phone-number'),
-                'buy_url'     => 'https://idehweb.com/product/100-whatsapp-otp-credits/',
+                'buy_url'     => 'https://idehweb.com/product/400-whatsapp-otp-credits/',
             ],
             [
-                'credits'     => 500,
-                'price'       => 40,
+                'credits'     => 2000,
+                'price'       => 42,
                 'description' => __('Ideal for larger businesses with higher OTP traffic.', 'login-with-phone-number'),
-                'buy_url'     => 'https://idehweb.com/product/500-whatsapp-otp-credits/',
+                'buy_url'     => 'https://idehweb.com/product/2000-whatsapp-otp-credits/',
             ],
         ];
 
