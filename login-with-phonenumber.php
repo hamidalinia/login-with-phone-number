@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Description: Login with phone number - sending sms - activate user by phone number - limit pages to login - register and login with ajax - modal
-Version: 1.8.40
+Version: 1.8.41
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Text Domain: login-with-phone-number
@@ -3306,8 +3306,11 @@ class idehwebLwp
                 ]);
                 die();
             }
+            $phone_number_with_country_code=false;
+
             if($options['idehweb_store_number_with_country_code']!='1' && ($options['idehweb_country_codes_default']!='')){
                 $country_code=$this->get_country_code_by_code($options['idehweb_country_codes_default']);
+                $phone_number_with_country_code=$phone_number;
 
                 $phone_number = preg_replace('/^' . preg_quote($country_code, '/') . '/', '', $phone_number);
             }
@@ -3409,13 +3412,13 @@ class idehwebLwp
             if (!isset($options['idehweb_password_login'])) $options['idehweb_password_login'] = '1';
             $options['idehweb_password_login'] = (bool)(int)$options['idehweb_password_login'];
             if (!$options['idehweb_password_login']) {
-                $log = $this->lwp_generate_token($username_exists, $phone_number, false, $method);
+                $log = $this->lwp_generate_token($username_exists, $phone_number_with_country_code ? $phone_number_with_country_code : $phone_number, false, $method);
 
             } else {
                 if (!$userRegisteredNow) {
                     $showPass = true;
                 } else {
-                    $log = $this->lwp_generate_token($username_exists, $phone_number, false, $method);
+                    $log = $this->lwp_generate_token($username_exists, $phone_number_with_country_code ? $phone_number_with_country_code : $phone_number, false, $method);
                 }
             }
             update_user_meta($username_exists, 'activation_code_timestamp', time());
@@ -3487,9 +3490,10 @@ class idehwebLwp
             ]);
             die();
         }
+        $phone_number_with_country_code=false;
         if($options['idehweb_store_number_with_country_code']!='1' && ($options['idehweb_country_codes_default']!='')){
             $country_code=$this->get_country_code_by_code($options['idehweb_country_codes_default']);
-
+            $phone_number_with_country_code=$phone_number;
             $phone_number = preg_replace('/^' . preg_quote($country_code, '/') . '/', '', $phone_number);
         }
         if (isset($email) && $email != '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -3527,7 +3531,7 @@ class idehwebLwp
 
         }
         if ($phone_number != '' && $ID != '') {
-            $log = $this->lwp_generate_token($ID, $phone_number, false, $method);
+            $log = $this->lwp_generate_token($ID, $phone_number_with_country_code ? $phone_number_with_country_code : $phone_number, false, $method);
 
 //
         }
