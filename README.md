@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 1.8.41
+Stable tag: 1.8.42
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -151,6 +151,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ##Changelog
+
+###1.8.42
+* Added a notice to encourage users to activate an SMS gateway for enabling login via phone number.
+* The notice informs users to configure the SMS gateway and highlights WhatsApp OTP as a more efficient, cost-effective solution.
+* Provides a direct link to the gateway settings page for easy configuration.
 
 ###1.8.41
 * System Default Gateway Upgrade! See your credit, track expiry, and send OTPs over WhatsApp with ease!

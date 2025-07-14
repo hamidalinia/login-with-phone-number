@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Description: Login with phone number - sending sms - activate user by phone number - limit pages to login - register and login with ajax - modal
-Version: 1.8.41
+Version: 1.8.42
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Text Domain: login-with-phone-number
@@ -44,6 +44,7 @@ class idehwebLwp
         add_action('admin_init', array(&$this, 'admin_init'));
         add_action('admin_menu', array(&$this, 'admin_menu'));
         add_action('admin_footer', array(&$this, 'admin_footer'));
+        add_action('admin_notices', array(&$this,'check_sms_gateway_configuration_notice'));
         add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
         add_action('wp_ajax_idehweb_lwp_merge_old_woocommerce_users', array(&$this, 'idehweb_lwp_merge_old_woocommerce_users'));
         add_action('wp_ajax_idehweb_lwp_auth_customer', array(&$this, 'idehweb_lwp_auth_customer'));
@@ -111,6 +112,26 @@ class idehwebLwp
         add_action('woodmart_before_wp_footer', array(&$this, 'remove_woodmart_default_sidebar'), 1);
     }
 
+    public function check_sms_gateway_configuration_notice($page){
+        // Get the settings
+        $options = get_option('idehweb_lwp_settings');
+
+        // Check if the 'idehweb_default_gateways' is set and if it's 'system'
+        if (!isset($options['idehweb_default_gateways']) || empty($options['idehweb_default_gateways']) || $options['idehweb_default_gateways'][0] == 'system') {
+            // Check if API key is not filled for 'system'
+            $apiKey = isset($options['idehweb_system_api_key']) ? esc_attr($options['idehweb_system_api_key']) : '';
+
+            if (empty($apiKey)) {
+                // Show admin notice if the API key is empty
+                ?>
+                <div class="notice notice-warning is-dismissible">
+                    <p><?php _e('Warning: To enable login via phone number, you need to activate an SMS gateway. For a more efficient and cost-effective solution, consider using the WhatsApp OTP gateway. Check out our WhatsApp packages for more details. <a href="' . esc_url( get_site_url() ) . '/wp-admin/admin.php?page=idehweb-lwp#lwp-tab-gateway-settings" target="_blank">Click here to configure your gateway settings.</a>', 'login-with-phone-number'); ?></p>
+
+                </div>
+                <?php
+            }
+        }
+    }
     function remove_woodmart_default_sidebar($page)
     {
         remove_action('woodmart_before_wp_footer', 'woodmart_sidebar_login_form', 160);
