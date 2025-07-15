@@ -125,8 +125,10 @@ class idehwebLwp
                 // Show admin notice if the API key is empty
                 ?>
                 <div class="notice notice-warning is-dismissible">
-                    <p><?php _e('Warning: To enable login via phone number, you need to activate an SMS gateway. For a more efficient and cost-effective solution, consider using the WhatsApp OTP gateway. Check out our WhatsApp packages for more details. <a href="' . esc_url( get_site_url() ) . '/wp-admin/admin.php?page=idehweb-lwp#lwp-tab-gateway-settings" target="_blank">Click here to configure your gateway settings.</a>', 'login-with-phone-number'); ?></p>
-
+                    <p><?php printf(
+								/* translators: %1$s: Opening anchor tag for gateway settings, %2$s: Closing anchor tag. */
+								esc_html__( 'Warning: To enable login via phone number, you need to activate an SMS gateway. For a more efficient and cost-effective solution, consider using the WhatsApp OTP gateway. Check out our WhatsApp packages for more details. %1$sClick here to configure your gateway settings.%2$s', 'login-with-phone-number' ),'<a href="' . esc_url( admin_url( 'admin.php?page=idehweb-lwp#lwp-tab-gateway-settings' ) ) . '" target="_blank">','</a>');?>
+					</p>
                 </div>
                 <?php
             }
