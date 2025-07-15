@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 1.8.42
+Stable tag: 1.8.43
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -151,6 +151,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ##Changelog
+
+###1.8.43
+* New Feature: Added an option to show the login/register form on all pages, except the "My Account" page in WooCommerce.
+* Admin can enable this option via the settings page.
+* The form will be displayed in the footer of all pages, excluding the WooCommerce account pages (my-account).
 
 ###1.8.42
 * Added a notice to encourage users to activate an SMS gateway for enabling login via phone number.

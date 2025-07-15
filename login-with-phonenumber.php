@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Description: Login with phone number - sending sms - activate user by phone number - limit pages to login - register and login with ajax - modal
-Version: 1.8.42
+Version: 1.8.43
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Text Domain: login-with-phone-number
@@ -110,8 +110,23 @@ class idehwebLwp
         add_action('set_logged_in_cookie', array(&$this, 'my_update_cookie'));
 
         add_action('woodmart_before_wp_footer', array(&$this, 'remove_woodmart_default_sidebar'), 1);
+        add_action('wp_footer', array(&$this,'idehweb_render_login_form_on_all_pages'));
     }
 
+
+    function idehweb_render_login_form_on_all_pages() {
+        // Get the stored option from the settings
+        $options = get_option('idehweb_lwp_settings');
+
+        // Check if the option is enabled
+        if (isset($options['idehweb_show_form_all_pages']) && $options['idehweb_show_form_all_pages'] == '1') {
+            // Check if it's not the "my-account" page
+            if (!is_page('my-account') && !is_account_page()) {
+                // Render the login/register form using a shortcode
+                echo do_shortcode('[idehweb_lwp]'); // Replace with your actual shortcode
+            }
+        }
+    }
     public function check_sms_gateway_configuration_notice($page){
         // Get the settings
         $options = get_option('idehweb_lwp_settings');
@@ -277,6 +292,7 @@ class idehwebLwp
 //        add_settings_section('idehweb-lwp-gateways', '', array(&$this, 'section_intro'), 'idehweb-lwp-gateways');
 
         add_settings_field('idehweb_styles_status', __('Enable custom styles', 'login-with-phone-number'), array(&$this, 'setting_idehweb_style_enable_custom_style'), 'idehweb-lwp-styles', 'idehweb-lwp-styles', ['label_for' => '', 'class' => 'ilwplabel']);
+        add_settings_field('idehweb_show_form_all_pages', __('Show login/register form in all pages', 'login-with-phone-number'), array(&$this, 'idehweb_show_form_all_pages'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-form-settings']);
         add_settings_field('idehweb_position_form', __('Enable fix position', 'login-with-phone-number'), array(&$this, 'idehweb_position_form'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-form-settings']);
         add_settings_field('idehweb_auto_show_form', __('Enable auto pop up form', 'login-with-phone-number'), array(&$this, 'idehweb_auto_show_form'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel related-to-position-fixed lwp-tab-form-settings']);
         add_settings_field('idehweb_close_form', __('Disable close (X) button', 'login-with-phone-number'), array(&$this, 'idehweb_close_button'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel related-to-position-fixed lwp-tab-form-settings']);
@@ -1533,6 +1549,15 @@ class idehwebLwp
 
     }
 
+    function idehweb_show_form_all_pages()
+    {
+        $options = get_option('idehweb_lwp_settings');
+        if (!isset($options['idehweb_show_form_all_pages'])) $options['idehweb_show_form_all_pages'] = '0';
+
+        echo '<input type="hidden" name="idehweb_lwp_settings[idehweb_show_form_all_pages]" class="idehweb_show_form_all_pages" value="0" />
+		<label><input type="checkbox" name="idehweb_lwp_settings[idehweb_show_form_all_pages]" class="idehweb_show_form_all_pages" value="1"' . (($options['idehweb_show_form_all_pages']) ? ' checked="checked"' : '') . ' />' . __('I want the login/register form to show on all pages', 'login-with-phone-number') . '</label>';
+
+    }
     function idehweb_position_form()
     {
         $options = get_option('idehweb_lwp_settings');
