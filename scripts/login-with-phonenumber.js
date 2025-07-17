@@ -28,8 +28,15 @@ jQuery(document).ready(function ($) {
         if (temp_sticky) {
             sticky = temp_sticky;
         }
-        if (sticky && sticky === '1')
-            $('body').append('<div class="lwp_login_overlay"></div>');
+        if ($('form#lwp_login').length > 0 || $('form#lwp_login_email').length > 0) {
+            if (sticky && sticky === '1') {
+                // Check if the overlay class doesn't exist and append it if needed
+                if ($('.lwp_login_overlay').length === 0) {
+                    $('body').append('<div class="lwp_login_overlay"></div>');
+                }
+            }
+        }
+
         // if ($(this).attr('id') == 'show_login')
         if ($('form#lwp_login').length > 0 && $('form#lwp_login_email').length > 0) {
             console.log('click on here 1');
