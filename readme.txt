@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 1.8.44
+Stable tag: 1.8.46
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -152,9 +152,15 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 ##Changelog
 
+###1.8.46
+* Added option to customize the text displayed after login (instead of the form)
+* Added `logout` className support
+* Added `UserName` and `IsLoggedIn` to the `wp_localize_script` object
+
+
 ###1.8.44
 * Added conditional check to ensure the .lwp_login_overlay is appended only if it does not already exist.
-*Enhanced the overlay display functionality for improved user experience when the sticky option is enabled.
+* Enhanced the overlay display functionality for improved user experience when the sticky option is enabled.
 
 ###1.8.43
 * New Feature: Added an option to show the login/register form on all pages, except the "My Account" page in WooCommerce.
