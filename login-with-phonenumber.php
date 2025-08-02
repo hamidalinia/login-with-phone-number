@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Description: Login with phone number - sending sms - activate user by phone number - limit pages to login - register and login with ajax - modal
-Version: 1.8.47
+Version: 1.8.48
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Text Domain: login-with-phone-number
@@ -4356,7 +4356,9 @@ class idehwebLwp
             if ($options['idehweb_use_custom_gateway'] == '1' && in_array('firebase', $options['idehweb_default_gateways']) && isset($_GET['phone_number']) && isset($_GET['method']) && $_GET['method'] == 'firebase') {
                 if (!isset($verificationId)) $verificationId = '';
                 $response = $this->idehweb_lwp_activate_through_firebase($verificationId, $secod);
-                if ($response->error && $response->error->code == 400) {
+//                if ($response->error && $response->error->code == 400) {
+
+                if (empty($response) || isset($response->error) || !isset($response->idToken)) {
                     echo json_encode([
                         'success' => false,
                         'phone_number' => $phone_number,
@@ -4668,8 +4670,12 @@ class idehwebLwp
     {
         $options = get_option('idehweb_lwp_settings');
 
-        if (!isset($options['idehweb_firebase_api'])) $options['idehweb_firebase_api'] = '';
-
+//        if (!isset($options['idehweb_firebase_api'])) $options['idehweb_firebase_api'] = '';
+        if (empty($options['idehweb_firebase_api'])) {
+            return (object) [
+                'error' => 'Firebase API key is missing. Please configure it in the plugin settings.'
+            ];
+        }
         $response = wp_safe_remote_post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPhoneNumber?key=" . $options['idehweb_firebase_api'], [
             'timeout' => 60,
             'redirection' => 4,
@@ -4680,8 +4686,20 @@ class idehwebLwp
                 'sessionInfo' => $sessionInfo
             ])
         ]);
+
+
+        // Check if the request was successful
+        if (is_wp_error($response)) {
+            return (object) [
+                'error' => 'Error connecting to Firebase: ' . $response->get_error_message()
+            ];
+        }
+
+
         $body = wp_remote_retrieve_body($response);
-        return json_decode($body);
+        $response_data = json_decode($body);
+
+        return $response_data;
     }
 
     function idehweb_lwp_check_credit()
