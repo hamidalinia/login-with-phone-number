@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 1.8.47
+Stable tag: 1.8.48
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -151,6 +151,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ##Changelog
+
+###1.8.48
+* Strengthened Firebase OTP verification logic to properly validate API responses before authenticating users.
+* Prevented unauthorized logins caused by improper handling of Firebase verification errors.
+* Added validation to ensure Firebase API key is configured before attempting verification.
 
 ###1.8.46
 * Added option to customize the text displayed after login (instead of the form)
