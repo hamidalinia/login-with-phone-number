@@ -8,9 +8,8 @@
  * @package Login with phone number
  */
 
-/**
- * Class LWP_Zenziva_Api class.
- */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class LWP_CUSTOM_Api
 {
 
@@ -122,16 +121,16 @@ class LWP_CUSTOM_Api
                 $success = true;
             } elseif ('60033' === $error_code) {
                 $success = false;
-                $user_message = __('Phone number is invalid', 'orion-login');
+                $user_message = __('Phone number is invalid', 'login-with-phone-number');
             } elseif ('60001' === $error_code) {
                 $success = false;
-                $user_message = __('Invalid API key', 'orion-login');
+                $user_message = __('Invalid API key', 'login-with-phone-number');
             } elseif ('60082' === $error_code) {
                 $success = false;
-                $user_message = __('Cannot send SMS to landline phone numbers', 'orion-login');
+                $user_message = __('Cannot send SMS to landline phone numbers', 'login-with-phone-number');
             } else {
                 $success = false;
-                $user_message = __('Api error', 'orion-login');
+                $user_message = __('Api error', 'login-with-phone-number');
             }
         }
 

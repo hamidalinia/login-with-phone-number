@@ -290,10 +290,10 @@ jQuery(document).ready(function ($) {
         // return
         $.ajax({
             dataType: 'json',
-            url: idehweb_lwp.ajaxurl,
+            url: lwp_admin_vars.ajaxurl,
             data: {
                 'action': 'idehweb_lwp_merge_old_woocommerce_users',
-                'nonce': idehweb_lwp?.nonce,
+                'nonce': lwp_admin_vars?.nonce,
             },
             success: function (data) {
 

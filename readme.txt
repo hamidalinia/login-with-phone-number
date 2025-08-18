@@ -1,8 +1,8 @@
 #OTP Login With Phone Number, OTP Verification
 Contributors: glboy
-Requires at least: 3.0.1
+Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 1.8.49
+Stable tag: 1.8.50
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -152,6 +152,33 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 ##Changelog
 
+###1.8.50
+* Added GPLv2 license declaration in the main plugin file and readme.txt to comply with WordPress.org requirements.
+* Added translators comments for all strings containing placeholders.
+* Ensured all __() calls include the correct text domain (login-with-phone-number).
+* Removed hidden files (like .DS_Store) from the plugin directory.
+* Renamed image files to remove spaces and special characters:
+  * flags@2x.png → flags-2x.png
+  * login-with-phone number-for-iran.gif → login-with-phone-number-for-iran.gif
+* Escaped user-generated output in JSON responses to prevent potential security issues.
+* Refactored main plugin code: split one large file into five smaller modular files for better readability and maintainability.
+* Fixed fatal error on sites without WooCommerce by guarding is_account_page() calls with function_exists().
+* Added versioning to all enqueued CSS and JS files for proper cache-busting (filemtime() recommended).
+* Fixed intlTelInput integration: ensured script and inline initialization work properly; added proper footer handling.
+* Corrected HTML input for security code (id attribute added, pattern changed to [0-9]{6} for HTML5 compliance).
+* Fixed minor typos and double slashes in Firebase script paths.
+* Ensured all scripts intended for front-end are hooked to wp_enqueue_scripts and not admin_enqueue_scripts.
+* Enhanced compatibility with PHP 8+ to avoid deprecated warnings.
+* Optimized SMS sending for faster processing and lower server load.
+* Added filter hooks to allow customizations for the SMS sending logic.
+* Improved error messages for failed phone number validation to be more user-friendly.
+* Added an option to enable/disable automatic phone number verification during registration.
+* Updated translation files to include new language keys for recently added features.
+* Fixed issue with multi-site installations where the plugin settings were not being saved correctly.
+* Improved UI for the admin settings page to make it more user-friendly and responsive.
+* Added feature to send a test SMS to verify gateway settings before saving them.
+
+
 ###1.8.48
 * Strengthened Firebase OTP verification logic to properly validate API responses before authenticating users.
 * Prevented unauthorized logins caused by improper handling of Firebase verification errors.
@@ -225,3 +252,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * optimize flags styles
 * add some other sms gateways
 * sync old woocommerce users billing_phone with $billing_phone
+
+
+
+== External Services ==
+
+This plugin uses external services to send SMS messages and verify phone numbers via OTP. Below is the list of services used and what data is sent:
+
+1. Firebase Authentication
+- Used to verify users’ phone numbers with OTP.
+- Data sent: phone number and verification requests.
+- Service provider: Google Firebase
+- Terms of Service: https://firebase.google.com/terms
+- Privacy Policy: https://firebase.google.com/support/privacy

@@ -173,10 +173,8 @@ jQuery(document).ready(function ($) {
         }
     })
     $('body').on('submit', 'form.ajax-auth.lwp-login-form-i:not(.firebase)', function (e) {
-        // $('form#lwp_login').on('submit', function (e) {
-        console.log('click on submit...')
-
         e.preventDefault();
+        console.log('submit form, login with phone...')
 
         let method = $('input[name="otp-method"]:checked').val();
         if (method === 'firebase') {
@@ -187,7 +185,7 @@ jQuery(document).ready(function ($) {
         if (!method) {
             method = $(this).attr('data-method');
         }
-        console.log('method', method)
+        console.log('method:', method)
 
         if (!$(this).valid()) {
             var reason = '';
@@ -200,24 +198,14 @@ jQuery(document).ready(function ($) {
             console.log('not valid...')
             return false;
         }
-        // if (typeof firebaseConfig !== 'undefined') {
-        //     console.log('it is firebase')
-        //     return false;
-        // }
+
         $('p.status', this).show().text(idehweb_lwp.loadingmessage);
         var action = 'lwp_ajax_login';
-        // var username = $('.lwp_username').val();
-        // username = username.replace(/^0+/, '');
         var username = $('[name="lwp_username"]').val();
+        console.log('username:', username);
         username = username.replace(/^[0\+]+/, '');
         var lwp_country_codes = $('#lwp_country_codes').val();
-        console.log('lwp_country_codes', lwp_country_codes);
-
-        // if (!lwp_country_codes) {
-        //     lwp_country_codes = $('.iti__country-list li:first-child').attr('data-dial-code');
-        // }
-        // console.log('lwp_country_codes', lwp_country_codes);
-
+        console.log('lwp_country_codes:', lwp_country_codes);
         username = lwp_country_codes + username;
         lwp_phone_number = username;
         var ctrl = $(this);
@@ -231,9 +219,6 @@ jQuery(document).ready(function ($) {
                 'nonce': lwp_nonce,
                 'username': username,
                 'method': method
-                // 'password': password,
-                // 'email': email,
-                // 'security': security
             },
             success: function (data) {
                 console.log('return response...')

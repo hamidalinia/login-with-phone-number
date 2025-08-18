@@ -1518,7 +1518,7 @@ html body .lwp_forms_login .iti--allow-dropdown input, .lwp_forms_login .iti--al
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
     .lwp_forms_login .iti__flag {
-        background-image: url(../images/flags@2x.png)
+        background-image: url(../images/flags_2x.png)
     }
 }
 

@@ -19,11 +19,19 @@ global $user_identity;
 ?>
 
 <div id="checkout-account-logged-in" class="lp-checkout-block left">
-	<p>
-		<?php printf( __( 'Logged in as <a href="%1$s">%2$s</a>.', 'learnpress' ), get_edit_user_link(), $user_identity ); ?>
+    <p>
+        <?php
+        /* translators: 1: User profile URL, 2: User display name */
+        printf(
+        /* translators: 1: User profile URL, 2: User display name */
+            esc_html__( 'Logged in as %2$s.', 'login-with-phone-number' ),
+            esc_url( get_edit_user_link() ),
+            esc_html( $user_identity )
+        );
+        ?>
 
-		<a href="<?php echo esc_url_raw( wp_logout_url( get_permalink() ) ); ?>" title="<?php esc_attr_e( 'Log out of this account', 'learnpress' ); ?>">
-			<?php esc_html_e( 'Log out &raquo;', 'learnpress' ); ?>
-		</a>
-	</p>
+        <a href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>" title="<?php esc_attr_e( 'Log out of this account', 'login-with-phone-number' ); ?>">
+            <?php esc_html_e( 'Log out &raquo;', 'login-with-phone-number' ); ?>
+        </a>
+    </p>
 </div>
