@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.50','all');
+            '1.8.51','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.50','all');
+            '1.8.51','all');
     }
 
     function admin_footer()
@@ -1212,7 +1212,12 @@ trait Admin_Functions
     }
     function settings_page()
     {
-
+        // Add nonce verification when form is submitted
+        if (isset($_POST['submit']) && !empty($_POST['lwp_admin_nonce_field'])) {
+            if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['lwp_admin_nonce_field'])), 'lwp_admin_nonce')) {
+                wp_die('Security check failed');
+            }
+        }
         $options = get_option('idehweb_lwp_settings');
 
         if (!isset($options['idehweb_phone_number'])) $options['idehweb_phone_number'] = '';
@@ -1254,13 +1259,19 @@ trait Admin_Functions
 
                 <div id="icon-themes" class="icon32"></div>
                 <h2 style="margin-bottom: 10px;"><?php esc_html_e('Login with phone number settings', 'login-with-phone-number'); ?></h2>
-                <?php if (isset($_GET['settings-updated'])) { if ($_GET['settings-updated']) {
+                <?php
+                if (isset($_GET['settings-updated'])) {
+                    $settings_updated = sanitize_text_field(wp_unslash($_GET['settings-updated']));
 
-                    ?>
-                    <div id="setting-error-settings_updated" class="updated settings-error">
-                        <p><strong><?php esc_html_e('Settings saved.', 'login-with-phone-number'); ?></strong></p>
-                    </div>
-                <?php } } ?>
+                    if ($settings_updated) {
+                        ?>
+                        <div id="setting-error-settings_updated" class="updated settings-error">
+                            <p><strong><?php esc_html_e('Settings saved.', 'login-with-phone-number'); ?></strong></p>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
                 <form action="options.php" method="post" id="iuytfrdghj" class="lwp-setting-page-main">
                     <?php
                     // Add the nonce field for verification
@@ -1575,6 +1586,15 @@ trait Admin_Functions
 
     function style_settings_page()
     {
+
+        // Add nonce verification
+        if (isset($_POST['submit']) && !empty($_POST['lwp_style_nonce_field'])) {
+            if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['lwp_style_nonce_field'])), 'lwp_style_nonce')) {
+                wp_die('Security check failed');
+            }
+        }
+
+
         $options = get_option('idehweb_lwp_settings');
         if (!isset($options['idehweb_phone_number'])) $options['idehweb_phone_number'] = '';
         if (!isset($options['idehweb_token'])) $options['idehweb_token'] = '';
@@ -1585,14 +1605,22 @@ trait Admin_Functions
         <div class="wrap">
             <div id="icon-themes" class="icon32"></div>
             <h2><?php esc_html_e('Style settings', 'login-with-phone-number'); ?></h2>
-            <?php if (isset($_GET['settings-updated']) && $_GET['settings-updated']) {
+            <?php
+            if (isset($_GET['settings-updated'])) {
+                $settings_updated = sanitize_text_field(wp_unslash($_GET['settings-updated']));
 
-                ?>
-                <div id="setting-error-settings_updated" class="updated settings-error">
-                    <p><strong><?php esc_html_e('Settings saved.', 'login-with-phone-number'); ?></strong></p>
-                </div>
-            <?php } ?>
+                if ($settings_updated) {
+                    ?>
+                    <div id="setting-error-settings_updated" class="updated settings-error">
+                        <p><strong><?php esc_html_e('Settings saved.', 'login-with-phone-number'); ?></strong></p>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+
             <form action="options.php" method="post" id="iuytfrdghj">
+                <?php wp_nonce_field('lwp_style_nonce', 'lwp_style_nonce_field'); ?>
                 <?php settings_fields('idehweb-lwp-styles'); ?>
                 <?php do_settings_sections('idehweb-lwp-styles'); ?>
 
@@ -1617,6 +1645,14 @@ trait Admin_Functions
 
     function localization_settings_page()
     {
+        // Add nonce verification
+        if (isset($_POST['submit']) && !empty($_POST['lwp_localization_nonce_field'])) {
+            if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['lwp_localization_nonce_field'])), 'lwp_localization_nonce')) {
+                wp_die('Security check failed');
+            }
+        }
+
+
         $options = get_option('idehweb_lwp_settings');
         if (!isset($options['idehweb_phone_number'])) $options['idehweb_phone_number'] = '';
         if (!isset($options['idehweb_token'])) $options['idehweb_token'] = '';
@@ -1627,14 +1663,23 @@ trait Admin_Functions
         <div class="wrap">
             <div id="icon-themes" class="icon32"></div>
             <h2><?php esc_html_e('Localization settings', 'login-with-phone-number'); ?></h2>
-            <?php if (isset($_GET['settings-updated']) && $_GET['settings-updated']) {
+            <?php
+            if (isset($_GET['settings-updated'])) {
+                $settings_updated = sanitize_text_field(wp_unslash($_GET['settings-updated']));
 
-                ?>
-                <div id="setting-error-settings_updated" class="updated settings-error">
-                    <p><strong><?php esc_html_e('Settings saved.', 'login-with-phone-number'); ?></strong></p>
-                </div>
-            <?php } ?>
+                if ($settings_updated === 'true' || $settings_updated === '1') {
+                    ?>
+                    <div id="setting-error-settings_updated" class="updated settings-error">
+                        <p><strong><?php esc_html_e('Settings saved.', 'login-with-phone-number'); ?></strong></p>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+
             <form action="options.php" method="post" id="iuytfrdghj">
+                <?php wp_nonce_field('lwp_localization_nonce', 'lwp_localization_nonce_field'); ?>
+
                 <?php settings_fields('idehweb-lwp-localization'); ?>
                 <?php do_settings_sections('idehweb-lwp-localization'); ?>
 

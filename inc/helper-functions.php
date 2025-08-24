@@ -396,18 +396,13 @@ trait Helper_Functions
         global $woocommerce;
 
         $_template = $template;
-        if (!$template_path)
-            $template_path = $woocommerce->template_url;
-        $plugin_path = untrailingslashit(plugin_dir_path(__FILE__)) . '/templates/woocommerce/';
-        // Look within passed path within the theme - this is priority
+//        if (!$template_path)
+//            $template_path = $woocommerce->template_url;
+        $plugin_path = untrailingslashit(dirname(__FILE__, 2)) . '/templates/woocommerce/';
         $template = locate_template(array($plugin_path . $template_name, $template_name), true);
-
-
         if (!$template && file_exists($plugin_path . $template_name))
             $template = $plugin_path . $template_name;
-
         if (!$template) $template = $_template;
-//        global $wp_filter;
         return $template;
     }
 

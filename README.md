@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 1.8.50
+Stable tag: 1.8.52
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -152,6 +152,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 ##Changelog
 
+###1.8.52
+* Fixed security vulnerabilities by adding proper nonce verification to all form submissions
+* Added input validation for all $_GET and $_POST superglobal variables
+* Implemented proper sanitization for user input before database operations
+* Fixed AJAX authentication issues by adding proper cookie handling with credentials
+* Added proper error handling for missing required fields
+* Improved form security with nonce fields on all admin settings pages
+* Fixed PHP warnings and implemented WordPress coding standards compliance
+* Added external services disclosure section to README
+
 ###1.8.50
 * Added GPLv2 license declaration in the main plugin file and readme.txt to comply with WordPress.org requirements.
 * Added translators comments for all strings containing placeholders.
@@ -257,11 +267,25 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == External Services ==
 
-This plugin uses external services to send SMS messages and verify phone numbers via OTP. Below is the list of services used and what data is sent:
+This plugin uses external services to provide chat support and analyze user behavior. Below is the list of services used and what data is sent:
 
-1. Firebase Authentication
-- Used to verify users’ phone numbers with OTP.
-- Data sent: phone number and verification requests.
+1. Crisp Chat
+- Used to provide live chat functionality within the plugin for user support.
+- Data sent: user chat messages, name, email, IP address.
+- Service provider: Crisp IM SARL
+- Terms of Service: https://crisp.chat/en/terms/
+- Privacy Policy: https://crisp.chat/en/privacy/
+
+2. Microsoft Clarity
+- Used for user behavior analytics to understand how users interact with the plugin's administrative pages.
+- Data sent: user interactions like mouse movements, clicks, and scrolling. Personally identifiable information (PII) is masked.
+- Service provider: Microsoft
+- Terms of Service: https://clarity.microsoft.com/terms
+- Privacy Policy: https://privacy.microsoft.com/en-us/privacystatement
+
+3. Firebase Authentication
+- Used to verify users’ phone numbers with OTP for secure authentication.
+- Data sent: phone number and verification requests. IP addresses are used for security and abuse prevention.
 - Service provider: Google Firebase
 - Terms of Service: https://firebase.google.com/terms
 - Privacy Policy: https://firebase.google.com/support/privacy

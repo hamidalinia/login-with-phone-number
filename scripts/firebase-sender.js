@@ -268,10 +268,13 @@ var fb_lwp_nonce=idehweb_lwp.nonce,fb_lwp_phone_number='',fb_lwp_email='';
         var ctrl = $(this);
 
         $.ajax({
-            // type: 'GET',
+            type: 'POST',
             dataType: 'json',
             url: idehweb_lwp.ajaxurl,
             data: obj,
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 $('p.status', ctrl).text(data.message);
                 if (data.success)

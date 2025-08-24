@@ -593,10 +593,13 @@ jQuery(document).ready(function ($) {
 // console.log("obj",obj)
 //         return;
         $.ajax({
-            // type: 'GET',
+            type: 'POST',
             dataType: 'json',
             url: idehweb_lwp.ajaxurl,
             data: obj,
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 $('p.status', ctrl).text(data.message);
                 if (data.success)
@@ -646,10 +649,13 @@ jQuery(document).ready(function ($) {
         var ctrl = $(this);
 
         $.ajax({
-            // type: 'GET',
+            type: 'POST',
             dataType: 'json',
             url: idehweb_lwp.ajaxurl,
             data: obj,
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 $('p.status', ctrl).text(data.message);
                 if (data.success)
