@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.51','all');
+            '1.8.53','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.51','all');
+            '1.8.53','all');
     }
 
     function admin_footer()
@@ -93,7 +93,7 @@ trait Admin_Functions
         if (intval($image_id) > 0) {
             $image = wp_get_attachment_image($image_id, 'medium', false, array('id' => 'lwp_media-preview-background-image'));
         } else {
-            $image = '<img id="lwp_media-preview-background-image" src="' . plugins_url('/images/default-background.png', __FILE__) . '" />';
+            $image = '<img id="lwp_media-preview-background-image" src="' . plugins_url('../images/default-background.png', __FILE__) . '" />';
         }
 //        echo $image;
         echo wp_kses_post($image);
@@ -951,7 +951,7 @@ trait Admin_Functions
             $image = wp_get_attachment_image($image_id, 'medium', false, array('id' => 'lwp_media-preview-image'));
         } else {
             // Some default image
-            $image = '<img id="lwp_media-preview-image" src="' . plugins_url('/images/default-logo.png', __FILE__) . '" />';
+            $image = '<img id="lwp_media-preview-image" src="' . plugins_url('../images/default-logo.png', __FILE__) . '" />';
         }
         // Use wp_kses_post() to sanitize and allow the image tag to be rendered.
         echo wp_kses_post($image); ?>
@@ -1413,33 +1413,40 @@ trait Admin_Functions
                     $locale = get_locale();
                     if ($locale == 'fa_IR') {
                         ?>
-                        <a style="display:block"
+                        <a style="margin-top: 10px;display:block"
+                           href="<?php echo esc_url("https://webruno.ir/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?>"
+                           target="_blank">
+                            <img style="width: 100%;max-width: 100%"
+                                 src="<?php echo esc_url(plugins_url('../images/web-design.gif', __FILE__)) ?>"/>
+                        </a>
+                        <a style="margin-top: 10px;display:block"
                            href="<?php echo esc_url("https://idehweb.ir/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%86%D9%8F%D8%B5%D8%A8-%D8%A7%D9%81%D8%B2%D9%88%D9%86%D9%87-%D9%88%D8%B1%D9%88%D8%AF-%D8%A8%D8%A7-%D8%B4%D9%85%D8%A7%D8%B1%D9%87-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%AF"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('/images/login-with-phone-number-for-iran.gif', __FILE__)) ?>"/>
+                                 src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-for-iran.gif', __FILE__)) ?>"/>
                         </a>
 
-                        <a style="margin-top: 10px;display:block"
-                           href="<?php echo esc_url("https://idehweb.ir/product/%D9%82%D8%A7%D9%84%D8%A8-%D9%88%D8%B1%D8%AF%D9%BE%D8%B1%D8%B3%DB%8C-%D9%86%D9%88%D8%AF%DB%8C-%D9%88%D8%A8/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?>"
-                           target="_blank">
-                            <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('/images/nodeweb-theme-wordpress.gif', __FILE__)) ?>"/>
-                        </a>
+<!--                        <a style="margin-top: 10px;display:block"-->
+<!--                           href="--><?php //echo esc_url("https://idehweb.ir/product/%D9%82%D8%A7%D9%84%D8%A8-%D9%88%D8%B1%D8%AF%D9%BE%D8%B1%D8%B3%DB%8C-%D9%86%D9%88%D8%AF%DB%8C-%D9%88%D8%A8/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?><!--"-->
+<!--                           target="_blank">-->
+<!--                            <img style="width: 100%;max-width: 100%"-->
+<!--                                 src="--><?php //echo esc_url(plugins_url('../images/nodeweb-theme-wordpress.gif', __FILE__)) ?><!--"/>-->
+<!--                        </a>-->
+
                         <?php
                     } else {
                         ?>
                         <a href="<?php echo esc_url("https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('/images/login-with-phone-number-en-final1.gif', dirname(__FILE__))) ?>"/>
+                                 src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-en-final1.gif', dirname(__FILE__))) ?>"/>
                         </a>
 
                         <a style="margin-top: 10px;display:block"
                            href="<?php echo esc_url("https://idehweb.com/product/nodeeweb-wordpress-theme/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('/images/nodeeweb-wordpress-theme.png', dirname(__FILE__))) ?>"/>
+                                 src="<?php echo esc_url(plugins_url('../images/nodeeweb-wordpress-theme.png', dirname(__FILE__))) ?>"/>
                         </a>
                         <?php
                     }

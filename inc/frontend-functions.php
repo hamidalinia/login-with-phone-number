@@ -137,19 +137,19 @@ trait Frontend_Functions
         );
 
         wp_enqueue_style('idehweb-lwp', plugins_url('/styles/login-with-phonenumber.css', dirname(__FILE__)),
-            array(), '1.8.51', 'all');
+            array(), '1.8.53', 'all');
 
 
-        wp_enqueue_script('idehweb-lwp-validate-script', plugins_url('/scripts/jquery.validate.js', dirname(__FILE__)), array('jquery'), '1.8.51', true);
+        wp_enqueue_script('idehweb-lwp-validate-script', plugins_url('/scripts/jquery.validate.js', dirname(__FILE__)), array('jquery'), '1.8.53', true);
 
 
-        wp_enqueue_script('idehweb-lwp', plugins_url('/scripts/login-with-phonenumber.js', dirname(__FILE__)), array('jquery'), '1.8.51', true);
+        wp_enqueue_script('idehweb-lwp', plugins_url('/scripts/login-with-phonenumber.js', dirname(__FILE__)), array('jquery'), '1.8.53', true);
 
 
         if ($options['idehweb_use_custom_gateway'] == '1' && in_array('firebase', $options['idehweb_default_gateways'])) {
-            wp_enqueue_script('lwp-firebase', plugins_url('/scripts/firebase/firebase-app.js', dirname(__FILE__)), array(), '1.8.51', true);
-            wp_enqueue_script('lwp-firebase-auth', plugins_url('/scripts/firebase//firebase-auth.js', dirname(__FILE__)), array(), '1.8.51', true);
-            wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.51', true);
+            wp_enqueue_script('lwp-firebase', plugins_url('/scripts/firebase/firebase-app.js', dirname(__FILE__)), array(), '1.8.53', true);
+            wp_enqueue_script('lwp-firebase-auth', plugins_url('/scripts/firebase//firebase-auth.js', dirname(__FILE__)), array(), '1.8.53', true);
+            wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.53', true);
 
             $localize['firebase_api'] = $options['idehweb_firebase_api'];
         }
@@ -184,13 +184,13 @@ trait Frontend_Functions
 
         wp_enqueue_style('lwp-intltelinput-style', plugins_url('/styles/intlTelInput.min.css', dirname(__FILE__)),
             array(),
-            '1.8.51',
+            '1.8.53',
             'all');
         wp_add_inline_style('lwp-intltelinput-style', '.iti { width: 100%; }#lwp_username{font-size: 20px;}');
 //
         wp_enqueue_script('lwp-intltelinput-script',
             plugins_url('/scripts/intlTelInput.min.js', dirname(__FILE__)),
-            array(), '1.8.51', true);
+            array(), '1.8.53', true);
 // Inline initialization
         wp_add_inline_script(
             'lwp-intltelinput-script',
