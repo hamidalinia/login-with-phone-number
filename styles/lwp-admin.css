@@ -3,6 +3,28 @@
     gap: 10px;
     margin-left: 2px;
 }
+
+input[name="idehweb_lwp_settings[idehweb_firebase_api]"],
+input[name="idehweb_lwp_settings[idehweb_custom_api_url]"],
+textarea[name="idehweb_lwp_settings[idehweb_firebase_config]"],
+textarea[name="idehweb_lwp_settings[idehweb_custom_api_header]"],
+textarea[name="idehweb_lwp_settings[idehweb_custom_api_body]"]
+textarea[name="idehweb_lwp_settings[idehweb_custom_api_smstext]"]
+
+{
+    direction: ltr;
+    text-align: left;
+}
+
+.rtl .idehweb_default_gateways_wrapper .select2-container--default .select2-selection--multiple .select2-selection__rendered li{
+    justify-content: right;
+
+}
+.idehweb_default_gateways_wrapper .select2-container--default .select2-selection--multiple .select2-selection__rendered li{
+
+    display: flex;
+    justify-content: left;
+}
 .lwp-tab-item{
     background-color: #fff;
     padding: 7px 10px;

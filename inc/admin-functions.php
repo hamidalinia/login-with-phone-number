@@ -1439,14 +1439,14 @@ trait Admin_Functions
                         <a href="<?php echo esc_url("https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-en-final1.gif', dirname(__FILE__))) ?>"/>
+                                 src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-en-final1.gif', (__FILE__))) ?>"/>
                         </a>
 
                         <a style="margin-top: 10px;display:block"
                            href="<?php echo esc_url("https://idehweb.com/product/nodeeweb-wordpress-theme/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('../images/nodeeweb-wordpress-theme.png', dirname(__FILE__))) ?>"/>
+                                 src="<?php echo esc_url(plugins_url('../images/nodeeweb-wordpress-theme.png', (__FILE__))) ?>"/>
                         </a>
                         <?php
                     }

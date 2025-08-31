@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 1.8.53
+Stable tag: 1.8.54
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -151,6 +151,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ##Changelog
+
+###1.8.54
+* Added: Firebase Auth JS file  
+* Fixed: Banner `src` in sidebar (corrected address)  
+* Fixed: Gateway input settings style (LTR layout)  
+
 
 ###1.8.53
 * Added: Translatable subject and message for activation code emails
