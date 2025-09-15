@@ -147,8 +147,10 @@ trait Frontend_Functions
 
 
         if ($options['idehweb_use_custom_gateway'] == '1' && in_array('firebase', $options['idehweb_default_gateways'])) {
-            wp_enqueue_script('lwp-firebase', plugins_url('/scripts/firebase/firebase-app.js', dirname(__FILE__)), array(), '1.8.53', true);
-            wp_enqueue_script('lwp-firebase-auth', plugins_url('/scripts/firebase//firebase-auth.js', dirname(__FILE__)), array(), '1.8.53', true);
+            wp_enqueue_script('lwp-google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), false, true);
+            wp_enqueue_script('lwp-firebase', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js', array(), false, true);
+            wp_enqueue_script('lwp-firebase-auth', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js', array(), false, true);
+
             wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.53', true);
 
             $localize['firebase_api'] = $options['idehweb_firebase_api'];

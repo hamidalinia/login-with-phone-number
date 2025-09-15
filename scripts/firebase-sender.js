@@ -334,7 +334,45 @@ if(email){
         e.preventDefault();
     });
 
+
     function runFBase(phoneNumber) {
+        // Ensure reCAPTCHA container exists
+        if (!$('#lwp-firebase-recaptcha').length) {
+            $('<div id="lwp-firebase-recaptcha"></div>').insertBefore('.submit_button.auth_phoneNumber');
+        }
+
+        // Initialize recaptchaVerifier if it doesn't exist
+        if (!window.recaptchaVerifier) {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('lwp-firebase-recaptcha', {
+                'size': 'invisible'
+            });
+        }
+
+        // Use a timeout to ensure reCAPTCHA is ready
+        setTimeout(function() {
+            firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+                .then(function(confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                    $('#lwp_login_email').fadeOut(10);
+                    $('#lwp_login').fadeOut(10);
+                    $('#lwp_activate').fadeIn(500);
+                    window.lwp_runTimer();
+                }).catch(function(error) {
+                console.error('Error:', error);
+                if (error && error.message && error.code) {
+                    $('p.status').html("<strong>"+error.code+"</strong><div>"+error.message+"</div>");
+                }
+
+                // Reset and recreate recaptchaVerifier on error
+                if (window.recaptchaVerifier) {
+                    window.recaptchaVerifier.clear();
+                    window.recaptchaVerifier = null;
+                }
+            });
+        }, 1000); // 1 second delay to ensure everything is loaded
+    }
+
+    function runFBaseOld(phoneNumber) {
 
         if (!window.recaptchaVerifier) {
             $('<div id="lwp-firebase-recaptcha"></div>').insertBefore('.submit_button.auth_phoneNumber');
