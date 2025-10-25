@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 1.8.56
+Stable tag: 1.8.57
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -66,26 +66,25 @@ You can use your custom gateway. you can also use other ready sms gateways from 
 
 Supported gateways for now:
 
-* Firebase
+* Firebase - Free
+* Msg91 - Free
 * Twilio
 * Netgsm
 * Alibabacloud
 * Messagebird
 * Kavenegar
 * Trustsignal
-* Msg91
 * taqnyat
 * 2factor
 * Textlocal
 * BlueSoft
 * IQSMS
-* Ippanel
 * Whatsapp
 * Ultramessage
 * Telegram
+* Ippanel
 * Sms.ir
 * MelliPayamak
-* KavehNegar
 * Farazsms
 
 
@@ -151,6 +150,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ##Changelog
+
+###1.8.57
+* Added: MSG91 gateway for free
 
 ###1.8.55
 * Added: Firebase library url import
