@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.57','all');
+            '1.8.58','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.57','all');
+            '1.8.58','all');
     }
 
     function admin_footer()
@@ -410,8 +410,11 @@ trait Admin_Functions
         }
 
         $gateways = [
-            ["value" => "firebase", "label" => __("Firebase - Google - Free", 'login-with-phone-number')],
-            ["value" => "custom", "label" => __("Custom (Config Your Gateway) - Free", 'login-with-phone-number')],
+            ["value" => "firebase","isFree" => true, "label" => __("Firebase - Google", 'login-with-phone-number')],
+            ["value" => "custom","isFree" => true, "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
+            ["value" => "msg91", "label" => __("Msg91 (PRO)", 'login-with-phone-number')],
+            ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
+
             ["value" => "twilio", "label" => __("Twilio (PRO)", 'login-with-phone-number')],
 //            ["value" => "whatsapp", "label" => __("Whatsapp Meta (PRO)", 'login-with-phone-number')],
 //            ["value" => "ultramsg", "label" => __("Ultramsg - Whatsapp third-party (PRO)", 'login-with-phone-number')],
@@ -419,11 +422,9 @@ trait Admin_Functions
             ["value" => "alibabacloud", "label" => __("Alibabacloud (PRO)", 'login-with-phone-number')],
             ["value" => "2factor", "label" => __("2factor (PRO)", 'login-with-phone-number')],
             ["value" => "farazsms", "label" => __("Farazsms (PRO)", 'login-with-phone-number')],
-            ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
             ["value" => "mellipayamak", "label" => __("Mellipayamak (PRO)", 'login-with-phone-number')],
             ["value" => "smsir", "label" => __("SMS.ir (PRO)", 'login-with-phone-number')],
             ["value" => "messageBird", "label" => __("MessageBird (PRO)", 'login-with-phone-number')],
-            ["value" => "msg91", "label" => __("Msg91 (PRO)", 'login-with-phone-number')],
             ["value" => "mshastra", "label" => __("Mshastra (PRO)", 'login-with-phone-number')],
             ["value" => "netgsm", "label" => __("Netgsm (PRO)", 'login-with-phone-number')],
             ["value" => "taqnyat", "label" => __("Taqnyat (PRO)", 'login-with-phone-number')],
@@ -439,15 +440,7 @@ trait Admin_Functions
         usort($gateways, function ($a, $b) {
             return strcasecmp($a['label'][0], $b['label'][0]);
         });
-        //        $affected_rows = [];
-//        $affected_rows = apply_filters('lwp_add_to_default_gateways', $affected_rows);
-//        if (!isset($options['idehweb_default_gateways'])) $options['idehweb_default_gateways'] = ['firebase'];
-//        $gateways = [
-//            ["value" => "firebase", "label" => __("Firebase (Google)", 'login-with-phone-number')],
-//            ["value" => "custom", "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
-//            ["value" => "twilio", "label" => __("Twilio (Pro)", 'login-with-phone-number')],
-//        ];
-//        $gateways = array_merge($gateways, $affected_rows);
+
         ?>
         <div class="idehweb_default_gateways_wrapper">
 
@@ -462,7 +455,15 @@ trait Admin_Functions
 //                    if (($gateway["value"] == $options['idehweb_default_gateways'])) {
                         $rr = true;
                     }
-                    echo '<option value="' . esc_attr($gateway["value"]) . '" ' . ($rr ? ' selected="selected"' : '') . '>' . esc_html($gateway['label']) . '</option>';
+
+                    echo '<option value="' . esc_attr($gateway["value"]) . '" ' . ($rr ? ' selected="selected"' : '') .
+                        (isset($gateway['isFree']) && $gateway['isFree'] === true ? ' data-free="true"' : '') . '>';
+
+                    echo esc_html($gateway['label']); // Display the label first
+
+                    echo '</option>';
+
+//                    echo '<option value="' . esc_attr($gateway["value"]) . '" ' . ($rr ? ' selected="selected"' : '') . '>' . esc_html($gateway['label']) . '</option>';
                 }
                 ?>
             </select>
@@ -1490,7 +1491,21 @@ trait Admin_Functions
                         $("#idehweb_phone_number_ccode").select2();
                         idehweb_country_codes.select2();
                         lwp_idehweb_country_codes.select2();
-                        $("#idehweb_default_gateways").select2();
+                        $("#idehweb_default_gateways").select2({
+                            templateResult: function(state) {
+                                var $state = $(state.element);
+
+                                // Check if the option has the data-free attribute
+                                if ($state.attr('data-free') === 'true') {
+                                    // Add the "Free" badge after the label text
+                                    var labelText = state.text;
+                                    return $('<span>' + labelText + ' <span class="lwp-badg-free">Free</span></span>');
+                                }
+
+                                // Just return the label if no 'Free' data attribute
+                                return state.text;
+                            }
+                        });
                         // $(".idehweb_default_gateways_wrapper ul.select2-selection__rendered").sortable({
                         //     containment: 'parent',
                         //

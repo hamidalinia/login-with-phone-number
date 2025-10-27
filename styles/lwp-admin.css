@@ -1,3 +1,9 @@
+.lwp-badg-free{
+    background-color: #19b5c1;
+    padding: 0 10px;
+    border-radius: 5px;
+    color: #fff;
+}
 .lwp-tabs-list{
     display: flex;
     gap: 10px;

@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 1.8.57
+Stable tag: 1.8.58
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: woocommerce, sms, phone, otp, login
@@ -150,6 +150,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ##Changelog
+
+###1.8.58
+* Added: Kavenegar sms gateway for free
 
 ###1.8.57
 * Added: MSG91 gateway for free

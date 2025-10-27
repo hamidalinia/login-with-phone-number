@@ -19,7 +19,8 @@ class lwp_msg91
         // Check if 'msg91' gateway already exists in the list
         foreach ($args as &$gateway) {
             if ($gateway['value'] === 'msg91') {
-                $gateway['label'] = esc_html__("msg91 - Free", 'login-with-phone-number'); // Update label
+                $gateway['label'] = esc_html__("msg91", 'login-with-phone-number'); // Update label
+                $gateway['isFree'] = true;
                 $exists = true;
                 break;
             }
@@ -27,7 +28,7 @@ class lwp_msg91
 
         // If 'msg91' is not in the list, add it
         if (!$exists) {
-            $args[] = ["value" => "msg91", "label" => esc_html__("msg91", 'login-with-phone-number')];
+            $args[] = ["value" => "msg91","isFree" => true, "label" => esc_html__("msg91", 'login-with-phone-number')];
         }
         return $args;
     }
