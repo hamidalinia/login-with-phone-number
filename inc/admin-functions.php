@@ -413,6 +413,7 @@ trait Admin_Functions
             ["value" => "firebase","isFree" => true, "label" => __("Firebase - Google", 'login-with-phone-number')],
             ["value" => "custom","isFree" => true, "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
             ["value" => "msg91", "label" => __("Msg91 (PRO)", 'login-with-phone-number')],
+            ["value" => "drpayamak", "label" => __("Drpayamak (PRO)", 'login-with-phone-number')],
             ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
 
             ["value" => "twilio", "label" => __("Twilio (PRO)", 'login-with-phone-number')],

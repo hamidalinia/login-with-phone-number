@@ -185,27 +185,27 @@ html body .lwp_forms_login .iti--allow-dropdown input, .lwp_forms_login .iti--al
     width: 40px !important;
 }
 
-.lwp_forms_login .iti__flag.iti__be {
+body.lwp-enabled .iti__flag.iti__be {
     width: 35px !important;
 }
 
-.lwp_forms_login .iti__flag.iti__ch {
+body.lwp-enabled .iti__flag.iti__ch {
     width: 30px !important;
 }
 
-.lwp_forms_login .iti__flag.iti__mc {
+body.lwp-enabled .iti__flag.iti__mc {
     width: 38px !important;
 }
 
-.lwp_forms_login .iti__flag.iti__ne {
+body.lwp-enabled .iti__flag.iti__ne {
     width: 35px !important;
 }
 
-.lwp_forms_login .iti__flag.iti__np {
+body.lwp-enabled .iti__flag.iti__np {
     width: 25px !important;
 }
 
-.lwp_forms_login .iti__flag.iti__va {
+body.lwp-enabled .iti__flag.iti__va {
     width: 30px !important;
 }
 
@@ -215,1292 +215,1292 @@ html body .lwp_forms_login .iti--allow-dropdown input, .lwp_forms_login .iti--al
     }
 }
 
-.lwp_forms_login .iti__flag.iti__ac {
+body.lwp-enabled .iti__flag.iti__ac {
     height: 20px;
     background-position: 0 0
 }
 
-.lwp_forms_login .iti__flag.iti__ad {
+body.lwp-enabled .iti__flag.iti__ad {
     height: 28px;
     background-position: -42px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ae {
+body.lwp-enabled .iti__flag.iti__ae {
     height: 20px;
     background-position: -84px 0
 }
 
-.lwp_forms_login .iti__flag.iti__af {
+body.lwp-enabled .iti__flag.iti__af {
     height: 27px;
     background-position: -126px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ag {
+body.lwp-enabled .iti__flag.iti__ag {
     height: 27px;
     background-position: -168px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ai {
+body.lwp-enabled .iti__flag.iti__ai {
     height: 20px;
     background-position: -210px 0
 }
 
-.lwp_forms_login .iti__flag.iti__al {
+body.lwp-enabled .iti__flag.iti__al {
     height: 29px;
     background-position: -252px 0
 }
 
-.lwp_forms_login .iti__flag.iti__am {
+body.lwp-enabled .iti__flag.iti__am {
     height: 20px;
     background-position: -294px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ao {
+body.lwp-enabled .iti__flag.iti__ao {
     height: 27px;
     background-position: -336px 0
 }
 
-.lwp_forms_login .iti__flag.iti__aq {
+body.lwp-enabled .iti__flag.iti__aq {
     height: 27px;
     background-position: -378px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ar {
+body.lwp-enabled .iti__flag.iti__ar {
     height: 25px;
     background-position: -420px 0
 }
 
-.lwp_forms_login .iti__flag.iti__as {
+body.lwp-enabled .iti__flag.iti__as {
     height: 20px;
     background-position: -462px 0
 }
 
-.lwp_forms_login .iti__flag.iti__at {
+body.lwp-enabled .iti__flag.iti__at {
     height: 27px;
     background-position: -504px 0
 }
 
-.lwp_forms_login .iti__flag.iti__au {
+body.lwp-enabled .iti__flag.iti__au {
     height: 20px;
     background-position: -546px 0
 }
 
-.lwp_forms_login .iti__flag.iti__aw {
+body.lwp-enabled .iti__flag.iti__aw {
     height: 27px;
     background-position: -588px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ax {
+body.lwp-enabled .iti__flag.iti__ax {
     height: 26px;
     background-position: -630px 0
 }
 
-.lwp_forms_login .iti__flag.iti__az {
+body.lwp-enabled .iti__flag.iti__az {
     height: 20px;
     background-position: -672px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ba {
+body.lwp-enabled .iti__flag.iti__ba {
     height: 20px;
     background-position: -714px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bb {
+body.lwp-enabled .iti__flag.iti__bb {
     height: 27px;
     background-position: -756px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bd {
+body.lwp-enabled .iti__flag.iti__bd {
     height: 24px;
     background-position: -798px 0
 }
 
-.lwp_forms_login .iti__flag.iti__be {
+body.lwp-enabled .iti__flag.iti__be {
     height: 30px;
     background-position: -840px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bf {
+body.lwp-enabled .iti__flag.iti__bf {
     height: 27px;
     background-position: -877px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bg {
+body.lwp-enabled .iti__flag.iti__bg {
     height: 24px;
     background-position: -919px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bh {
+body.lwp-enabled .iti__flag.iti__bh {
     height: 24px;
     background-position: -961px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bi {
+body.lwp-enabled .iti__flag.iti__bi {
     height: 24px;
     background-position: -1003px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bj {
+body.lwp-enabled .iti__flag.iti__bj {
     height: 27px;
     background-position: -1045px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bl {
+body.lwp-enabled .iti__flag.iti__bl {
     height: 27px;
     background-position: -1087px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bm {
+body.lwp-enabled .iti__flag.iti__bm {
     height: 20px;
     background-position: -1129px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bn {
+body.lwp-enabled .iti__flag.iti__bn {
     height: 20px;
     background-position: -1171px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bo {
+body.lwp-enabled .iti__flag.iti__bo {
     height: 28px;
     background-position: -1213px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bq {
+body.lwp-enabled .iti__flag.iti__bq {
     height: 27px;
     background-position: -1255px 0
 }
 
-.lwp_forms_login .iti__flag.iti__br {
+body.lwp-enabled .iti__flag.iti__br {
     height: 28px;
     background-position: -1297px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bs {
+body.lwp-enabled .iti__flag.iti__bs {
     height: 20px;
     background-position: -1339px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bt {
+body.lwp-enabled .iti__flag.iti__bt {
     height: 27px;
     background-position: -1381px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bv {
+body.lwp-enabled .iti__flag.iti__bv {
     height: 29px;
     background-position: -1423px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bw {
+body.lwp-enabled .iti__flag.iti__bw {
     height: 27px;
     background-position: -1465px 0
 }
 
-.lwp_forms_login .iti__flag.iti__by {
+body.lwp-enabled .iti__flag.iti__by {
     height: 20px;
     background-position: -1507px 0
 }
 
-.lwp_forms_login .iti__flag.iti__bz {
+body.lwp-enabled .iti__flag.iti__bz {
     height: 27px;
     background-position: -1549px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ca {
+body.lwp-enabled .iti__flag.iti__ca {
     height: 20px;
     background-position: -1591px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cc {
+body.lwp-enabled .iti__flag.iti__cc {
     height: 20px;
     background-position: -1633px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cd {
+body.lwp-enabled .iti__flag.iti__cd {
     height: 30px;
     background-position: -1675px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cf {
+body.lwp-enabled .iti__flag.iti__cf {
     height: 27px;
     background-position: -1717px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cg {
+body.lwp-enabled .iti__flag.iti__cg {
     height: 27px;
     background-position: -1759px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ch {
+body.lwp-enabled .iti__flag.iti__ch {
     height: 30px;
     background-position: -1801px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ci {
+body.lwp-enabled .iti__flag.iti__ci {
     height: 27px;
     background-position: -1833px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ck {
+body.lwp-enabled .iti__flag.iti__ck {
     height: 20px;
     background-position: -1875px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cl {
+body.lwp-enabled .iti__flag.iti__cl {
     height: 27px;
     background-position: -1917px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cm {
+body.lwp-enabled .iti__flag.iti__cm {
     height: 27px;
     background-position: -1959px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cn {
+body.lwp-enabled .iti__flag.iti__cn {
     height: 27px;
     background-position: -2001px 0
 }
 
-.lwp_forms_login .iti__flag.iti__co {
+body.lwp-enabled .iti__flag.iti__co {
     height: 27px;
     background-position: -2043px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cp {
+body.lwp-enabled .iti__flag.iti__cp {
     height: 27px;
     background-position: -2085px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cr {
+body.lwp-enabled .iti__flag.iti__cr {
     height: 24px;
     background-position: -2127px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cu {
+body.lwp-enabled .iti__flag.iti__cu {
     height: 20px;
     background-position: -2169px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cv {
+body.lwp-enabled .iti__flag.iti__cv {
     height: 24px;
     background-position: -2211px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cw {
+body.lwp-enabled .iti__flag.iti__cw {
     height: 27px;
     background-position: -2253px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cx {
+body.lwp-enabled .iti__flag.iti__cx {
     height: 20px;
     background-position: -2295px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cy {
+body.lwp-enabled .iti__flag.iti__cy {
     height: 27px;
     background-position: -2337px 0
 }
 
-.lwp_forms_login .iti__flag.iti__cz {
+body.lwp-enabled .iti__flag.iti__cz {
     height: 27px;
     background-position: -2379px 0
 }
 
-.lwp_forms_login .iti__flag.iti__de {
+body.lwp-enabled .iti__flag.iti__de {
     height: 24px;
     background-position: -2421px 0
 }
 
-.lwp_forms_login .iti__flag.iti__dg {
+body.lwp-enabled .iti__flag.iti__dg {
     height: 20px;
     background-position: -2463px 0
 }
 
-.lwp_forms_login .iti__flag.iti__dj {
+body.lwp-enabled .iti__flag.iti__dj {
     height: 27px;
     background-position: -2505px 0
 }
 
-.lwp_forms_login .iti__flag.iti__dk {
+body.lwp-enabled .iti__flag.iti__dk {
     height: 30px;
     background-position: -2547px 0
 }
 
-.lwp_forms_login .iti__flag.iti__dm {
+body.lwp-enabled .iti__flag.iti__dm {
     height: 20px;
     background-position: -2589px 0
 }
 
-.lwp_forms_login .iti__flag.iti__do {
+body.lwp-enabled .iti__flag.iti__do {
     height: 27px;
     background-position: -2631px 0
 }
 
-.lwp_forms_login .iti__flag.iti__dz {
+body.lwp-enabled .iti__flag.iti__dz {
     height: 27px;
     background-position: -2673px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ea {
+body.lwp-enabled .iti__flag.iti__ea {
     height: 27px;
     background-position: -2715px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ec {
+body.lwp-enabled .iti__flag.iti__ec {
     height: 27px;
     background-position: -2757px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ee {
+body.lwp-enabled .iti__flag.iti__ee {
     height: 26px;
     background-position: -2799px 0
 }
 
-.lwp_forms_login .iti__flag.iti__eg {
+body.lwp-enabled .iti__flag.iti__eg {
     height: 27px;
     background-position: -2841px 0
 }
 
-.lwp_forms_login .iti__flag.iti__eh {
+body.lwp-enabled .iti__flag.iti__eh {
     height: 20px;
     background-position: -2883px 0
 }
 
-.lwp_forms_login .iti__flag.iti__er {
+body.lwp-enabled .iti__flag.iti__er {
     height: 20px;
     background-position: -2925px 0
 }
 
-.lwp_forms_login .iti__flag.iti__es {
+body.lwp-enabled .iti__flag.iti__es {
     height: 27px;
     background-position: -2967px 0
 }
 
-.lwp_forms_login .iti__flag.iti__et {
+body.lwp-enabled .iti__flag.iti__et {
     height: 20px;
     background-position: -3009px 0
 }
 
-.lwp_forms_login .iti__flag.iti__eu {
+body.lwp-enabled .iti__flag.iti__eu {
     height: 27px;
     background-position: -3051px 0
 }
 
-.lwp_forms_login .iti__flag.iti__fi {
+body.lwp-enabled .iti__flag.iti__fi {
     height: 25px;
     background-position: -3093px 0
 }
 
-.lwp_forms_login .iti__flag.iti__fj {
+body.lwp-enabled .iti__flag.iti__fj {
     height: 20px;
     background-position: -3135px 0
 }
 
-.lwp_forms_login .iti__flag.iti__fk {
+body.lwp-enabled .iti__flag.iti__fk {
     height: 20px;
     background-position: -3177px 0
 }
 
-.lwp_forms_login .iti__flag.iti__fm {
+body.lwp-enabled .iti__flag.iti__fm {
     height: 21px;
     background-position: -3219px 0
 }
 
-.lwp_forms_login .iti__flag.iti__fo {
+body.lwp-enabled .iti__flag.iti__fo {
     height: 29px;
     background-position: -3261px 0
 }
 
-.lwp_forms_login .iti__flag.iti__fr {
+body.lwp-enabled .iti__flag.iti__fr {
     height: 27px;
     background-position: -3303px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ga {
+body.lwp-enabled .iti__flag.iti__ga {
     height: 30px;
     background-position: -3345px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gb {
+body.lwp-enabled .iti__flag.iti__gb {
     height: 20px;
     background-position: -3387px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gd {
+body.lwp-enabled .iti__flag.iti__gd {
     height: 24px;
     background-position: -3429px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ge {
+body.lwp-enabled .iti__flag.iti__ge {
     height: 27px;
     background-position: -3471px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gf {
+body.lwp-enabled .iti__flag.iti__gf {
     height: 27px;
     background-position: -3513px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gg {
+body.lwp-enabled .iti__flag.iti__gg {
     height: 27px;
     background-position: -3555px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gh {
+body.lwp-enabled .iti__flag.iti__gh {
     height: 27px;
     background-position: -3597px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gi {
+body.lwp-enabled .iti__flag.iti__gi {
     height: 20px;
     background-position: -3639px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gl {
+body.lwp-enabled .iti__flag.iti__gl {
     height: 27px;
     background-position: -3681px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gm {
+body.lwp-enabled .iti__flag.iti__gm {
     height: 27px;
     background-position: -3723px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gn {
+body.lwp-enabled .iti__flag.iti__gn {
     height: 27px;
     background-position: -3765px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gp {
+body.lwp-enabled .iti__flag.iti__gp {
     height: 27px;
     background-position: -3807px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gq {
+body.lwp-enabled .iti__flag.iti__gq {
     height: 27px;
     background-position: -3849px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gr {
+body.lwp-enabled .iti__flag.iti__gr {
     height: 27px;
     background-position: -3891px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gs {
+body.lwp-enabled .iti__flag.iti__gs {
     height: 20px;
     background-position: -3933px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gt {
+body.lwp-enabled .iti__flag.iti__gt {
     height: 25px;
     background-position: -3975px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gu {
+body.lwp-enabled .iti__flag.iti__gu {
     height: 22px;
     background-position: -4017px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gw {
+body.lwp-enabled .iti__flag.iti__gw {
     height: 20px;
     background-position: -4059px 0
 }
 
-.lwp_forms_login .iti__flag.iti__gy {
+body.lwp-enabled .iti__flag.iti__gy {
     height: 24px;
     background-position: -4101px 0
 }
 
-.lwp_forms_login .iti__flag.iti__hk {
+body.lwp-enabled .iti__flag.iti__hk {
     height: 27px;
     background-position: -4143px 0
 }
 
-.lwp_forms_login .iti__flag.iti__hm {
+body.lwp-enabled .iti__flag.iti__hm {
     height: 20px;
     background-position: -4185px 0
 }
 
-.lwp_forms_login .iti__flag.iti__hn {
+body.lwp-enabled .iti__flag.iti__hn {
     height: 20px;
     background-position: -4227px 0
 }
 
-.lwp_forms_login .iti__flag.iti__hr {
+body.lwp-enabled .iti__flag.iti__hr {
     height: 20px;
     background-position: -4269px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ht {
+body.lwp-enabled .iti__flag.iti__ht {
     height: 24px;
     background-position: -4311px 0
 }
 
-.lwp_forms_login .iti__flag.iti__hu {
+body.lwp-enabled .iti__flag.iti__hu {
     height: 20px;
     background-position: -4353px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ic {
+body.lwp-enabled .iti__flag.iti__ic {
     height: 27px;
     background-position: -4395px 0
 }
 
-.lwp_forms_login .iti__flag.iti__id {
+body.lwp-enabled .iti__flag.iti__id {
     height: 27px;
     background-position: -4437px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ie {
+body.lwp-enabled .iti__flag.iti__ie {
     height: 20px;
     background-position: -4479px 0
 }
 
-.lwp_forms_login .iti__flag.iti__il {
+body.lwp-enabled .iti__flag.iti__il {
     height: 29px;
     background-position: -4521px 0
 }
 
-.lwp_forms_login .iti__flag.iti__im {
+body.lwp-enabled .iti__flag.iti__im {
     height: 20px;
     background-position: -4563px 0
 }
 
-.lwp_forms_login .iti__flag.iti__in {
+body.lwp-enabled .iti__flag.iti__in {
     height: 27px;
     background-position: -4605px 0
 }
 
-.lwp_forms_login .iti__flag.iti__io {
+body.lwp-enabled .iti__flag.iti__io {
     height: 20px;
     background-position: -4647px 0
 }
 
-.lwp_forms_login .iti__flag.iti__iq {
+body.lwp-enabled .iti__flag.iti__iq {
     height: 27px;
     background-position: -4689px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ir {
+body.lwp-enabled .iti__flag.iti__ir {
     height: 23px;
     background-position: -4731px 0
 }
 
-.lwp_forms_login .iti__flag.iti__is {
+body.lwp-enabled .iti__flag.iti__is {
     height: 29px;
     background-position: -4773px 0
 }
 
-.lwp_forms_login .iti__flag.iti__it {
+body.lwp-enabled .iti__flag.iti__it {
     height: 27px;
     background-position: -4815px 0
 }
 
-.lwp_forms_login .iti__flag.iti__je {
+body.lwp-enabled .iti__flag.iti__je {
     height: 24px;
     background-position: -4857px 0
 }
 
-.lwp_forms_login .iti__flag.iti__jm {
+body.lwp-enabled .iti__flag.iti__jm {
     height: 20px;
     background-position: -4899px 0
 }
 
-.lwp_forms_login .iti__flag.iti__jo {
+body.lwp-enabled .iti__flag.iti__jo {
     height: 20px;
     background-position: -4941px 0
 }
 
-.lwp_forms_login .iti__flag.iti__jp {
+body.lwp-enabled .iti__flag.iti__jp {
     height: 27px;
     background-position: -4983px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ke {
+body.lwp-enabled .iti__flag.iti__ke {
     height: 27px;
     background-position: -5025px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kg {
+body.lwp-enabled .iti__flag.iti__kg {
     height: 24px;
     background-position: -5067px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kh {
+body.lwp-enabled .iti__flag.iti__kh {
     height: 26px;
     background-position: -5109px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ki {
+body.lwp-enabled .iti__flag.iti__ki {
     height: 20px;
     background-position: -5151px 0
 }
 
-.lwp_forms_login .iti__flag.iti__km {
+body.lwp-enabled .iti__flag.iti__km {
     height: 24px;
     background-position: -5193px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kn {
+body.lwp-enabled .iti__flag.iti__kn {
     height: 27px;
     background-position: -5235px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kp {
+body.lwp-enabled .iti__flag.iti__kp {
     height: 20px;
     background-position: -5277px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kr {
+body.lwp-enabled .iti__flag.iti__kr {
     height: 27px;
     background-position: -5319px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kw {
+body.lwp-enabled .iti__flag.iti__kw {
     height: 20px;
     background-position: -5361px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ky {
+body.lwp-enabled .iti__flag.iti__ky {
     height: 20px;
     background-position: -5403px 0
 }
 
-.lwp_forms_login .iti__flag.iti__kz {
+body.lwp-enabled .iti__flag.iti__kz {
     height: 20px;
     background-position: -5445px 0
 }
 
-.lwp_forms_login .iti__flag.iti__la {
+body.lwp-enabled .iti__flag.iti__la {
     height: 27px;
     background-position: -5487px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lb {
+body.lwp-enabled .iti__flag.iti__lb {
     height: 27px;
     background-position: -5529px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lc {
+body.lwp-enabled .iti__flag.iti__lc {
     height: 20px;
     background-position: -5571px 0
 }
 
-.lwp_forms_login .iti__flag.iti__li {
+body.lwp-enabled .iti__flag.iti__li {
     height: 24px;
     background-position: -5613px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lk {
+body.lwp-enabled .iti__flag.iti__lk {
     height: 20px;
     background-position: -5655px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lr {
+body.lwp-enabled .iti__flag.iti__lr {
     height: 21px;
     background-position: -5697px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ls {
+body.lwp-enabled .iti__flag.iti__ls {
     height: 27px;
     background-position: -5739px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lt {
+body.lwp-enabled .iti__flag.iti__lt {
     height: 24px;
     background-position: -5781px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lu {
+body.lwp-enabled .iti__flag.iti__lu {
     height: 24px;
     background-position: -5823px 0
 }
 
-.lwp_forms_login .iti__flag.iti__lv {
+body.lwp-enabled .iti__flag.iti__lv {
     height: 20px;
     background-position: -5865px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ly {
+body.lwp-enabled .iti__flag.iti__ly {
     height: 20px;
     background-position: -5907px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ma {
+body.lwp-enabled .iti__flag.iti__ma {
     height: 27px;
     background-position: -5949px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mc {
+body.lwp-enabled .iti__flag.iti__mc {
     height: 30px;
     background-position: -5991px 0
 }
 
-.lwp_forms_login .iti__flag.iti__md {
+body.lwp-enabled .iti__flag.iti__md {
     height: 20px;
     background-position: -6031px 0
 }
 
-.lwp_forms_login .iti__flag.iti__me {
+body.lwp-enabled .iti__flag.iti__me {
     height: 20px;
     background-position: -6073px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mf {
+body.lwp-enabled .iti__flag.iti__mf {
     height: 27px;
     background-position: -6115px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mg {
+body.lwp-enabled .iti__flag.iti__mg {
     height: 27px;
     background-position: -6157px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mh {
+body.lwp-enabled .iti__flag.iti__mh {
     height: 21px;
     background-position: -6199px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mk {
+body.lwp-enabled .iti__flag.iti__mk {
     height: 20px;
     background-position: -6241px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ml {
+body.lwp-enabled .iti__flag.iti__ml {
     height: 27px;
     background-position: -6283px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mm {
+body.lwp-enabled .iti__flag.iti__mm {
     height: 27px;
     background-position: -6325px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mn {
+body.lwp-enabled .iti__flag.iti__mn {
     height: 20px;
     background-position: -6367px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mo {
+body.lwp-enabled .iti__flag.iti__mo {
     height: 27px;
     background-position: -6409px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mp {
+body.lwp-enabled .iti__flag.iti__mp {
     height: 20px;
     background-position: -6451px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mq {
+body.lwp-enabled .iti__flag.iti__mq {
     height: 27px;
     background-position: -6493px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mr {
+body.lwp-enabled .iti__flag.iti__mr {
     height: 27px;
     background-position: -6535px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ms {
+body.lwp-enabled .iti__flag.iti__ms {
     height: 20px;
     background-position: -6577px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mt {
+body.lwp-enabled .iti__flag.iti__mt {
     height: 27px;
     background-position: -6619px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mu {
+body.lwp-enabled .iti__flag.iti__mu {
     height: 27px;
     background-position: -6661px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mv {
+body.lwp-enabled .iti__flag.iti__mv {
     height: 27px;
     background-position: -6703px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mw {
+body.lwp-enabled .iti__flag.iti__mw {
     height: 27px;
     background-position: -6745px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mx {
+body.lwp-enabled .iti__flag.iti__mx {
     height: 23px;
     background-position: -6787px 0
 }
 
-.lwp_forms_login .iti__flag.iti__my {
+body.lwp-enabled .iti__flag.iti__my {
     height: 20px;
     background-position: -6829px 0
 }
 
-.lwp_forms_login .iti__flag.iti__mz {
+body.lwp-enabled .iti__flag.iti__mz {
     height: 27px;
     background-position: -6871px 0
 }
 
-.lwp_forms_login .iti__flag.iti__na {
+body.lwp-enabled .iti__flag.iti__na {
     height: 27px;
     background-position: -6913px 0
 }
 
-.lwp_forms_login .iti__flag.iti__nc {
+body.lwp-enabled .iti__flag.iti__nc {
     height: 20px;
     background-position: -6955px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ne {
+body.lwp-enabled .iti__flag.iti__ne {
     height: 30px;
     background-position: -6997px 0
 }
 
-.lwp_forms_login .iti__flag.iti__nf {
+body.lwp-enabled .iti__flag.iti__nf {
     height: 20px;
     background-position: -7034px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ng {
+body.lwp-enabled .iti__flag.iti__ng {
     height: 20px;
     background-position: -7076px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ni {
+body.lwp-enabled .iti__flag.iti__ni {
     height: 24px;
     background-position: -7118px 0
 }
 
-.lwp_forms_login .iti__flag.iti__nl {
+body.lwp-enabled .iti__flag.iti__nl {
     height: 27px;
     background-position: -7160px 0
 }
 
-.lwp_forms_login .iti__flag.iti__no {
+body.lwp-enabled .iti__flag.iti__no {
     height: 29px;
     background-position: -7202px 0
 }
 
-.lwp_forms_login .iti__flag.iti__np {
+body.lwp-enabled .iti__flag.iti__np {
     height: 30px;
     background-position: -7244px 0
 }
 
-.lwp_forms_login .iti__flag.iti__nr {
+body.lwp-enabled .iti__flag.iti__nr {
     height: 20px;
     background-position: -7271px 0
 }
 
-.lwp_forms_login .iti__flag.iti__nu {
+body.lwp-enabled .iti__flag.iti__nu {
     height: 20px;
     background-position: -7313px 0
 }
 
-.lwp_forms_login .iti__flag.iti__nz {
+body.lwp-enabled .iti__flag.iti__nz {
     height: 20px;
     background-position: -7355px 0
 }
 
-.lwp_forms_login .iti__flag.iti__om {
+body.lwp-enabled .iti__flag.iti__om {
     height: 20px;
     background-position: -7397px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pa {
+body.lwp-enabled .iti__flag.iti__pa {
     height: 27px;
     background-position: -7439px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pe {
+body.lwp-enabled .iti__flag.iti__pe {
     height: 27px;
     background-position: -7481px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pf {
+body.lwp-enabled .iti__flag.iti__pf {
     height: 27px;
     background-position: -7523px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pg {
+body.lwp-enabled .iti__flag.iti__pg {
     height: 30px;
     background-position: -7565px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ph {
+body.lwp-enabled .iti__flag.iti__ph {
     height: 20px;
     background-position: -7607px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pk {
+body.lwp-enabled .iti__flag.iti__pk {
     height: 27px;
     background-position: -7649px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pl {
+body.lwp-enabled .iti__flag.iti__pl {
     height: 25px;
     background-position: -7691px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pm {
+body.lwp-enabled .iti__flag.iti__pm {
     height: 27px;
     background-position: -7733px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pn {
+body.lwp-enabled .iti__flag.iti__pn {
     height: 20px;
     background-position: -7775px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pr {
+body.lwp-enabled .iti__flag.iti__pr {
     height: 27px;
     background-position: -7817px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ps {
+body.lwp-enabled .iti__flag.iti__ps {
     height: 20px;
     background-position: -7859px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pt {
+body.lwp-enabled .iti__flag.iti__pt {
     height: 27px;
     background-position: -7901px 0
 }
 
-.lwp_forms_login .iti__flag.iti__pw {
+body.lwp-enabled .iti__flag.iti__pw {
     height: 25px;
     background-position: -7943px 0
 }
 
-.lwp_forms_login .iti__flag.iti__py {
+body.lwp-enabled .iti__flag.iti__py {
     height: 22px;
     background-position: -7985px 0
 }
 
-.lwp_forms_login .iti__flag.iti__qa {
+body.lwp-enabled .iti__flag.iti__qa {
     height: 16px;
     background-position: -8027px 0
 }
 
-.lwp_forms_login .iti__flag.iti__re {
+body.lwp-enabled .iti__flag.iti__re {
     height: 27px;
     background-position: -8069px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ro {
+body.lwp-enabled .iti__flag.iti__ro {
     height: 27px;
     background-position: -8111px 0
 }
 
-.lwp_forms_login .iti__flag.iti__rs {
+body.lwp-enabled .iti__flag.iti__rs {
     height: 27px;
     background-position: -8153px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ru {
+body.lwp-enabled .iti__flag.iti__ru {
     height: 27px;
     background-position: -8195px 0
 }
 
-.lwp_forms_login .iti__flag.iti__rw {
+body.lwp-enabled .iti__flag.iti__rw {
     height: 27px;
     background-position: -8237px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sa {
+body.lwp-enabled .iti__flag.iti__sa {
     height: 27px;
     background-position: -8279px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sb {
+body.lwp-enabled .iti__flag.iti__sb {
     height: 20px;
     background-position: -8321px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sc {
+body.lwp-enabled .iti__flag.iti__sc {
     height: 20px;
     background-position: -8363px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sd {
+body.lwp-enabled .iti__flag.iti__sd {
     height: 20px;
     background-position: -8405px 0
 }
 
-.lwp_forms_login .iti__flag.iti__se {
+body.lwp-enabled .iti__flag.iti__se {
     height: 25px;
     background-position: -8447px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sg {
+body.lwp-enabled .iti__flag.iti__sg {
     height: 27px;
     background-position: -8489px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sh {
+body.lwp-enabled .iti__flag.iti__sh {
     height: 20px;
     background-position: -8531px 0
 }
 
-.lwp_forms_login .iti__flag.iti__si {
+body.lwp-enabled .iti__flag.iti__si {
     height: 20px;
     background-position: -8573px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sj {
+body.lwp-enabled .iti__flag.iti__sj {
     height: 29px;
     background-position: -8615px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sk {
+body.lwp-enabled .iti__flag.iti__sk {
     height: 27px;
     background-position: -8657px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sl {
+body.lwp-enabled .iti__flag.iti__sl {
     height: 27px;
     background-position: -8699px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sm {
+body.lwp-enabled .iti__flag.iti__sm {
     height: 30px;
     background-position: -8741px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sn {
+body.lwp-enabled .iti__flag.iti__sn {
     height: 27px;
     background-position: -8783px 0
 }
 
-.lwp_forms_login .iti__flag.iti__so {
+body.lwp-enabled .iti__flag.iti__so {
     height: 27px;
     background-position: -8825px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sr {
+body.lwp-enabled .iti__flag.iti__sr {
     height: 27px;
     background-position: -8867px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ss {
+body.lwp-enabled .iti__flag.iti__ss {
     height: 20px;
     background-position: -8909px 0
 }
 
-.lwp_forms_login .iti__flag.iti__st {
+body.lwp-enabled .iti__flag.iti__st {
     height: 20px;
     background-position: -8951px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sv {
+body.lwp-enabled .iti__flag.iti__sv {
     height: 23px;
     background-position: -8993px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sx {
+body.lwp-enabled .iti__flag.iti__sx {
     height: 27px;
     background-position: -9035px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sy {
+body.lwp-enabled .iti__flag.iti__sy {
     height: 27px;
     background-position: -9077px 0
 }
 
-.lwp_forms_login .iti__flag.iti__sz {
+body.lwp-enabled .iti__flag.iti__sz {
     height: 27px;
     background-position: -9119px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ta {
+body.lwp-enabled .iti__flag.iti__ta {
     height: 20px;
     background-position: -9161px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tc {
+body.lwp-enabled .iti__flag.iti__tc {
     height: 20px;
     background-position: -9203px 0
 }
 
-.lwp_forms_login .iti__flag.iti__td {
+body.lwp-enabled .iti__flag.iti__td {
     height: 27px;
     background-position: -9245px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tf {
+body.lwp-enabled .iti__flag.iti__tf {
     height: 27px;
     background-position: -9287px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tg {
+body.lwp-enabled .iti__flag.iti__tg {
     height: 25px;
     background-position: -9329px 0
 }
 
-.lwp_forms_login .iti__flag.iti__th {
+body.lwp-enabled .iti__flag.iti__th {
     height: 27px;
     background-position: -9371px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tj {
+body.lwp-enabled .iti__flag.iti__tj {
     height: 20px;
     background-position: -9413px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tk {
+body.lwp-enabled .iti__flag.iti__tk {
     height: 20px;
     background-position: -9455px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tl {
+body.lwp-enabled .iti__flag.iti__tl {
     height: 20px;
     background-position: -9497px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tm {
+body.lwp-enabled .iti__flag.iti__tm {
     height: 27px;
     background-position: -9539px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tn {
+body.lwp-enabled .iti__flag.iti__tn {
     height: 27px;
     background-position: -9581px 0
 }
 
-.lwp_forms_login .iti__flag.iti__to {
+body.lwp-enabled .iti__flag.iti__to {
     height: 20px;
     background-position: -9623px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tr {
+body.lwp-enabled .iti__flag.iti__tr {
     height: 27px;
     background-position: -9665px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tt {
+body.lwp-enabled .iti__flag.iti__tt {
     height: 24px;
     background-position: -9707px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tv {
+body.lwp-enabled .iti__flag.iti__tv {
     height: 20px;
     background-position: -9749px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tw {
+body.lwp-enabled .iti__flag.iti__tw {
     height: 27px;
     background-position: -9791px 0
 }
 
-.lwp_forms_login .iti__flag.iti__tz {
+body.lwp-enabled .iti__flag.iti__tz {
     height: 27px;
     background-position: -9833px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ua {
+body.lwp-enabled .iti__flag.iti__ua {
     height: 27px;
     background-position: -9875px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ug {
+body.lwp-enabled .iti__flag.iti__ug {
     height: 27px;
     background-position: -9917px 0
 }
 
-.lwp_forms_login .iti__flag.iti__um {
+body.lwp-enabled .iti__flag.iti__um {
     height: 21px;
     background-position: -9959px 0
 }
 
-.lwp_forms_login .iti__flag.iti__un {
+body.lwp-enabled .iti__flag.iti__un {
     height: 27px;
     background-position: -10001px 0
 }
 
-.lwp_forms_login .iti__flag.iti__us {
+body.lwp-enabled .iti__flag.iti__us {
     height: 21px;
     background-position: -10043px 0
 }
 
-.lwp_forms_login .iti__flag.iti__uy {
+body.lwp-enabled .iti__flag.iti__uy {
     height: 27px;
     background-position: -10085px 0
 }
 
-.lwp_forms_login .iti__flag.iti__uz {
+body.lwp-enabled .iti__flag.iti__uz {
     height: 20px;
     background-position: -10127px 0
 }
 
-.lwp_forms_login .iti__flag.iti__va {
+body.lwp-enabled .iti__flag.iti__va {
     height: 30px;
     background-position: -10169px 0
 }
 
-.lwp_forms_login .iti__flag.iti__vc {
+body.lwp-enabled .iti__flag.iti__vc {
     height: 27px;
     background-position: -10201px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ve {
+body.lwp-enabled .iti__flag.iti__ve {
     height: 27px;
     background-position: -10243px 0
 }
 
-.lwp_forms_login .iti__flag.iti__vg {
+body.lwp-enabled .iti__flag.iti__vg {
     height: 20px;
     background-position: -10285px 0
 }
 
-.lwp_forms_login .iti__flag.iti__vi {
+body.lwp-enabled .iti__flag.iti__vi {
     height: 27px;
     background-position: -10327px 0
 }
 
-.lwp_forms_login .iti__flag.iti__vn {
+body.lwp-enabled .iti__flag.iti__vn {
     height: 27px;
     background-position: -10369px 0
 }
 
-.lwp_forms_login .iti__flag.iti__vu {
+body.lwp-enabled .iti__flag.iti__vu {
     height: 24px;
     background-position: -10411px 0
 }
 
-.lwp_forms_login .iti__flag.iti__wf {
+body.lwp-enabled .iti__flag.iti__wf {
     height: 27px;
     background-position: -10453px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ws {
+body.lwp-enabled .iti__flag.iti__ws {
     height: 20px;
     background-position: -10495px 0
 }
 
-.lwp_forms_login .iti__flag.iti__xk {
+body.lwp-enabled .iti__flag.iti__xk {
     height: 29px;
     background-position: -10537px 0
 }
 
-.lwp_forms_login .iti__flag.iti__ye {
+body.lwp-enabled .iti__flag.iti__ye {
     height: 27px;
     background-position: -10579px 0
 }
 
-.lwp_forms_login .iti__flag.iti__yt {
+body.lwp-enabled .iti__flag.iti__yt {
     height: 27px;
     background-position: -10621px 0
 }
 
-.lwp_forms_login .iti__flag.iti__za {
+body.lwp-enabled .iti__flag.iti__za {
     height: 27px;
     background-position: -10663px 0
 }
 
-.lwp_forms_login .iti__flag.iti__zm {
+body.lwp-enabled .iti__flag.iti__zm {
     height: 27px;
     background-position: -10705px 0
 }
 
-.lwp_forms_login .iti__flag.iti__zw {
+body.lwp-enabled .iti__flag.iti__zw {
     height: 20px;
     background-position: -10747px 0
 }
@@ -1522,6 +1522,294 @@ html body .lwp_forms_login .iti--allow-dropdown input, .lwp_forms_login .iti--al
     }
 }
 
-.lwp_forms_login .iti__flag.iti__np {
+body.lwp-enabled .iti__flag.iti__np {
     background-color: transparent
+}
+
+
+
+
+
+
+
+/* ===== MOBILE CSS FOR ITI CONTAINER ===== */
+/* Target screens 768px and below (mobile/tablet) */
+@media (max-width: 768px) {
+
+    /* ===== MAIN CONTAINER FIXES ===== */
+    body.lwp-enabled .iti.iti--container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 999999 !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* ===== COUNTRY LIST STYLES ===== */
+    .iti.iti--container .iti__country-list {
+        position: relative !important;
+        max-width: 90vw !important;
+        width: 280px !important;
+        max-height: 70vh !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 20px 20px 0 0 !important;
+        background: #fff !important;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        animation: slideUp 0.3s ease-out !important;
+    }
+
+    /* ===== COUNTRY ITEM STYLES ===== */
+    .iti.iti--container .iti__country {
+        display: flex !important;
+        align-items: center !important;
+        padding: 15px 20px !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        white-space: normal !important;
+        min-height: 60px !important;
+    }
+
+    .iti.iti--container .iti__country:last-child {
+        border-bottom: none !important;
+    }
+
+    .iti.iti--container .iti__country.iti__highlight {
+        background-color: #f5f5f5 !important;
+    }
+
+    /* ===== FLAG BOX STYLES ===== */
+    .iti.iti--container .iti__flag-box {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 50px !important;
+        min-width: 50px !important;
+        margin-right: 15px !important;
+    }
+
+    .iti.iti--container .iti__flag {
+        background-repeat: no-repeat !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* ===== COUNTRY NAME STYLES ===== */
+    .iti.iti--container .iti__country-name {
+        /*flex: 1 !important;*/
+        font-size: 16px !important;
+        color: #333 !important;
+        text-align: right !important;
+        padding-left: 10px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    /* ===== DIAL CODE STYLES ===== */
+    .iti.iti--container .iti__dial-code {
+        color: #666 !important;
+        font-size: 14px !important;
+        font-weight: normal !important;
+        min-width: 60px !important;
+        text-align: left !important;
+    }
+
+    /* ===== DIVIDER STYLES ===== */
+    .iti.iti--container .iti__divider {
+        padding: 10px 20px !important;
+        margin: 0 !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+        font-size: 14px !important;
+        color: #999 !important;
+        background: #f9f9f9 !important;
+    }
+
+    /* ===== DROPUP FIX ===== */
+    .iti.iti--container .iti__country-list--dropup {
+        bottom: 0 !important;
+        margin-bottom: 0 !important;
+        border-radius: 20px 20px 0 0 !important;
+    }
+
+    /* ===== ANIMATION ===== */
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* ===== SEARCH BOX (if plugin adds search) ===== */
+    .iti.iti--container .iti__search-input {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 10 !important;
+        width: 100% !important;
+        padding: 15px 20px !important;
+        border: none !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+        font-size: 16px !important;
+        background: #fff !important;
+        outline: none !important;
+    }
+
+    /* ===== SCROLLBAR STYLING ===== */
+    .iti.iti--container .iti__country-list::-webkit-scrollbar {
+        width: 6px !important;
+    }
+
+    .iti.iti--container .iti__country-list::-webkit-scrollbar-track {
+        background: #f1f1f1 !important;
+        border-radius: 10px !important;
+    }
+
+    .iti.iti--container .iti__country-list::-webkit-scrollbar-thumb {
+        background: #ccc !important;
+        border-radius: 10px !important;
+    }
+
+    /* ===== CLOSE BUTTON (optional) ===== */
+    .iti.iti--container::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: transparent !important;
+        z-index: -1 !important;
+    }
+
+    /* ===== TOUCH FRIENDLY SIZES ===== */
+    .iti.iti--container .iti__country {
+        min-height: 56px !important; /* Minimum touch target size */
+    }
+
+    /* ===== RTL SUPPORT ===== */
+    html[dir="rtl"] .iti.iti--container .iti__country-name {
+        text-align: left !important;
+        padding-left: 0 !important;
+        padding-right: 10px !important;
+    }
+
+    html[dir="rtl"] .iti.iti--container .iti__dial-code {
+        /*text-align: right !important;*/
+    }
+
+    html[dir="rtl"] .iti.iti--container .iti__flag-box {
+        /*margin-right: 0 !important;*/
+        /*margin-left: 15px !important;*/
+    }
+}
+
+/* ===== SMALLER MOBILE DEVICES (phones) ===== */
+@media (max-width: 480px) {
+    .iti.iti--container .iti__country-list {
+        max-height: 80vh !important;
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    .iti.iti--container .iti__country {
+        padding: 12px 15px !important;
+        min-height: 54px !important;
+        font-size: 15px !important;
+        direction: ltr;
+    }
+
+    .iti.iti--container .iti__flag-box {
+        width: 45px !important;
+        min-width: 45px !important;
+        margin-right: 12px !important;
+    }
+
+    .iti.iti--container .iti__dial-code {
+        font-size: 13px !important;
+        min-width: 55px !important;
+    }
+
+    .iti.iti--container .iti__divider {
+        padding: 8px 15px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* ===== TABLET LANDSCAPE ===== */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .iti.iti--container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        z-index: 999999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .iti.iti--container .iti__country-list {
+        max-width: 400px !important;
+        max-height: 60vh !important;
+        border-radius: 15px !important;
+        margin: auto !important;
+    }
+}
+
+/* ===== FLAG SPRITE FIX FOR MOBILE ===== */
+@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+(max-width: 768px) and (min-resolution: 192dpi) {
+    /*.iti.iti--container .iti__flag {*/
+        /*background-image: url(../images/flags_2x.png) !important;*/
+        /*background-size: 10787px 30px !important;*/
+    /*}*/
+    .iti.iti--container .iti__flag {
+        height: 30px;
+        box-shadow: 0 0 1px 0 #888;
+        background-image: url(../images/flags.png) !important;
+        background-repeat: no-repeat;
+        background-color: #dbdbdb;
+        background-position: 40px 0;
+        /* background-size: auto !important; */
+        width: 40px !important;
+    }
+}
+
+/* ===== PREVENT BODY SCROLL WHEN DROPDOWN IS OPEN ===== */
+body.iti-mobile {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ===== ENSURE ITI CONTAINER IS ALWAYS VISIBLE ===== */
+.iti.iti--container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.iti.iti--container .iti__hide {
+    display: none !important;
 }

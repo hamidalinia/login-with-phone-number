@@ -3,7 +3,7 @@
 Plugin Name: OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Description: Login with phone number - sending sms - activate user by phone number - limit pages to login - register and login with ajax - modal
-Version: 1.8.58
+Version: 1.8.59
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/
 Text Domain: login-with-phone-number
@@ -22,7 +22,7 @@ require_once plugin_dir_path(__FILE__) . 'inc/frontend-functions.php';
 require_once plugin_dir_path(__FILE__) . 'inc/ajax-handlers.php';
 require_once plugin_dir_path(__FILE__) . 'inc/helper-functions.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/class-lwp-custom-api.php';
-require_once plugin_dir_path(__FILE__) . 'gateways/lwp-msg91/lwp-msg91.php';
+require_once plugin_dir_path(__FILE__) . 'gateways/lwp-drpayamak/lwp-drpayamak.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-kavenegar/lwp-kavenegar.php';
 
 
@@ -43,6 +43,7 @@ class idehwebLwp
         add_action('admin_notices', array($this, 'check_sms_gateway_configuration_notice'));
         add_action('admin_enqueue_scripts', array($this, 'lwp_load_wp_media_files'));
         add_action('wp_ajax_lwp_media_get_image', array($this, 'lwp_media_get_image'));
+        add_filter('body_class', array($this, 'add_lwp_body_class'));
 
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
         add_action('show_user_profile', array($this, 'lwp_add_phonenumber_field'));
@@ -95,6 +96,10 @@ class idehwebLwp
             return true;
         }, 1);
         add_filter('learn_press_locate_template', array($this, 'lwp_addon_learnpress_login'), 1, 3);
+    }
+    public function add_lwp_body_class($classes) {
+        $classes[] = 'lwp-enabled';
+        return $classes;
     }
 }
 
