@@ -51,7 +51,7 @@ trait Admin_Functions
     function admin_footer()
     {
         $screen = get_current_screen();
-        $options = get_option('idehweb_lwp_settings');
+	$options = get_option('idehweb_lwp_settings');
         if (!isset($options['idehweb_online_support'])) $options['idehweb_online_support'] = '1';
         if (!isset($options['idehweb_usage_tracking'])) $options['idehweb_usage_tracking'] = '1';
 
@@ -81,7 +81,7 @@ trait Admin_Functions
             ?>
             <script type="text/javascript">window.makecrispactivate = 1;</script>
             <?php
-        }
+	}
     }
 
     function setting_idehweb_style_background()
@@ -411,7 +411,8 @@ trait Admin_Functions
 
         $gateways = [
             ["value" => "firebase","isFree" => true, "label" => __("Firebase - Google", 'login-with-phone-number')],
-            ["value" => "custom","isFree" => true, "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
+	    ["value" => "custom","isFree" => true, "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
+            ["value" => "kwtsms", "isFree" => __("kwtSMS", 'login-with-phone-number')],
             ["value" => "msg91", "label" => __("Msg91 (PRO)", 'login-with-phone-number')],
             ["value" => "drpayamak", "label" => __("Drpayamak (PRO)", 'login-with-phone-number')],
             ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
