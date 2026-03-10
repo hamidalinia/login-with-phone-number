@@ -658,6 +658,21 @@ trait Ajax_Handlers
                     ]);
                 } else {
 //                if($response=='true') {
+
+                    $firebase_phone = isset($response->phoneNumber) ? ltrim($response->phoneNumber, '+') : '';
+                    $requested_phone = $phone_number;
+
+                    if (empty($firebase_phone) || (
+                            $firebase_phone !== $requested_phone &&
+                            !str_ends_with($firebase_phone, $requested_phone)
+                        )) {
+                        wp_send_json([
+                            'success' => false,
+                            'message' => __('Phone number mismatch. Verification failed.', 'login-with-phone-number')
+                        ]);
+                    }
+
+
                     $user = get_user_by('ID', $username_exists);
                     if (!is_wp_error($user)) {
 //                        wp_clear_auth_cookie();
@@ -714,6 +729,21 @@ trait Ajax_Handlers
                     ]);
                 } else {
 //                if($response=='true') {
+                    // ONLY validate phone number if this is Firebase authentication
+                    if (isset($_GET['method']) && $_GET['method'] === 'firebase') {
+                        $firebase_phone = isset($response->phoneNumber) ? ltrim($response->phoneNumber, '+') : '';
+                        $requested_phone = $phone_number;
+
+                        if (empty($firebase_phone) || (
+                                $firebase_phone !== $requested_phone &&
+                                !str_ends_with($firebase_phone, $requested_phone)
+                            )) {
+                            wp_send_json([
+                                'success' => false,
+                                'message' => __('Phone number mismatch. Verification failed.', 'login-with-phone-number')
+                            ]);
+                        }
+                    }
                     $user = get_user_by('ID', $username_exists);
                     if (!is_wp_error($user)) {
 //                        wp_clear_auth_cookie();

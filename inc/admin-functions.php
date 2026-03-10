@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.58','all');
+            '1.8.61','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.58','all');
+            '1.8.61','all');
     }
 
     function admin_footer()
