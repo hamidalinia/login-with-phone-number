@@ -1438,6 +1438,12 @@ trait Admin_Functions
                         <?php
                     } else {
                         ?>
+                        <a style="margin-bottom: 10px;display:block"
+                           href="<?php echo esc_url("https://webruno.ir/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?>"
+                           target="_blank">
+                            <img style="width: 100%;max-width: 100%"
+                                 src="<?php echo esc_url(plugins_url('../images/webdesign.gif', __FILE__)) ?>"/>
+                        </a>
                         <a href="<?php echo esc_url("https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
