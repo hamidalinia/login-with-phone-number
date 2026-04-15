@@ -1439,7 +1439,7 @@ trait Admin_Functions
                     } else {
                         ?>
                         <a style="margin-bottom: 10px;display:block"
-                           href="<?php echo esc_url("https://webruno.ir/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?>"
+                           href="<?php echo esc_url("https://webruno.com/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
                                  src="<?php echo esc_url(plugins_url('../images/webdesign.gif', __FILE__)) ?>"/>
