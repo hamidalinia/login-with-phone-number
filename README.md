@@ -1,8 +1,8 @@
 === OTP Login With Phone Number, OTP Verification ===
 Contributors: glboy
-Requires at least: 4.0
+Requires at least: 5.9
 Tested up to: 6.8
-Stable tag: 1.8.64
+Stable tag: 1.8.65
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -188,6 +188,9 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.65 =
+* Enable show form on checkout page
 
 = 1.8.63 =
 * Maintenance and stability improvements
