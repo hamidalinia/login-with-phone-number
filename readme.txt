@@ -1,8 +1,8 @@
 === OTP Login With Phone Number, OTP Verification ===
 Contributors: glboy
 Requires at least: 5.9
-Tested up to: 6.8
-Stable tag: 1.8.68
+Tested up to: 7.0
+Stable tag: 1.8.69
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
