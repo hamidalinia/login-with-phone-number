@@ -1,5 +1,20 @@
 <?php
+/**
+ * LWP Netgsm Gateway Class
+ *
+ * @package LoginWithPhoneNumber
+ */
 
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ * Class lwp_netgsm
+ *
+ * Netgsm SMS Gateway integration for Login With Phone Number plugin
+ */
 class lwp_netgsm
 {
     /**
@@ -24,10 +39,10 @@ class lwp_netgsm
      * @param array $args The existing list of gateways.
      * @return array The updated list of gateways.
      */
-    public function lwp_add_to_default_gateways($args = [])
+    public function lwp_add_to_default_gateways($args = array())
     {
         if (!is_array($args)) {
-            $args = [];
+            $args = array();
         }
 
         $exists = false;
@@ -36,8 +51,7 @@ class lwp_netgsm
         foreach ($args as &$gateway) {
             if ($gateway['value'] === 'netgsm') {
                 $gateway['isFree'] = true;
-
-                $gateway['label'] = __("Netgsm", 'lwp-netgsm');
+                $gateway['label'] = __('Netgsm', 'login-with-phone-number');
                 $exists = true;
                 break;
             }
@@ -45,7 +59,11 @@ class lwp_netgsm
 
         // If 'netgsm' is not in the list, add it
         if (!$exists) {
-            $args[] = ["value" => "netgsm","isFree" => true,  "label" => __("Netgsm", 'lwp-netgsm')];
+            $args[] = array(
+                'value' => 'netgsm',
+                'isFree' => true,
+                'label' => __('Netgsm', 'login-with-phone-number')
+            );
         }
         return $args;
     }
@@ -56,10 +74,10 @@ class lwp_netgsm
      * @param array $args The existing list of gateways.
      * @return array The updated list of gateways.
      */
-    public function lwp_add_to_verification_support_functions($args = [])
+    public function lwp_add_to_verification_support_functions($args = array())
     {
         if (!is_array($args)) {
-            $args = [];
+            $args = array();
         }
 
         $exists = false;
@@ -74,7 +92,7 @@ class lwp_netgsm
 
         // If 'netgsm' is not in the list, add it
         if (!$exists) {
-            $args[] = "netgsm";
+            $args[] = 'netgsm';
         }
         return $args;
     }
@@ -87,47 +105,62 @@ class lwp_netgsm
         // Add the settings fields for Netgsm's credentials (username/password for Basic Auth)
         add_settings_field(
             'idehweb_netgsm_username',
-            __('Enter Netgsm Username', 'lwp-netgsm'),
+            __('Enter Netgsm Username', 'login-with-phone-number'),
             array($this, 'setting_idehweb_username'),
             'idehweb-lwp',
             'idehweb-lwp',
-            ['label_for' => 'lwp_netgsm_username', 'class' => 'ilwplabel lwp-gateways related_to_netgsm']
+            array(
+                'label_for' => 'lwp_netgsm_username',
+                'class' => 'ilwplabel lwp-gateways related_to_netgsm'
+            )
         );
 
         add_settings_field(
             'idehweb_netgsm_password',
-            __('Enter Netgsm Password', 'lwp-netgsm'),
+            __('Enter Netgsm Password', 'login-with-phone-number'),
             array($this, 'setting_idehweb_password'),
             'idehweb-lwp',
             'idehweb-lwp',
-            ['label_for' => 'lwp_netgsm_password', 'class' => 'ilwplabel lwp-gateways related_to_netgsm']
+            array(
+                'label_for' => 'lwp_netgsm_password',
+                'class' => 'ilwplabel lwp-gateways related_to_netgsm'
+            )
         );
 
         add_settings_field(
             'idehweb_netgsm_from',
-            __('Enter Sender Name (msgheader)', 'lwp-netgsm'),
+            __('Enter Sender Name (msgheader)', 'login-with-phone-number'),
             array($this, 'setting_idehweb_from'),
             'idehweb-lwp',
             'idehweb-lwp',
-            ['label_for' => 'lwp_netgsm_from', 'class' => 'ilwplabel lwp-gateways related_to_netgsm']
+            array(
+                'label_for' => 'lwp_netgsm_from',
+                'class' => 'ilwplabel lwp-gateways related_to_netgsm'
+            )
         );
 
         add_settings_field(
             'idehweb_netgsm_message',
-            __('Enter Message Template (use ${code} for OTP code)', 'lwp-netgsm'),
+            __('Enter Message Template (use ${code} for OTP code)', 'login-with-phone-number'),
             array($this, 'setting_idehweb_message'),
             'idehweb-lwp',
             'idehweb-lwp',
-            ['label_for' => 'lwp_netgsm_message', 'class' => 'ilwplabel lwp-gateways related_to_netgsm']
+            array(
+                'label_for' => 'lwp_netgsm_message',
+                'class' => 'ilwplabel lwp-gateways related_to_netgsm'
+            )
         );
 
         add_settings_field(
             'idehweb_netgsm_encoding',
-            __('Message Encoding', 'lwp-netgsm'),
+            __('Message Encoding', 'login-with-phone-number'),
             array($this, 'setting_idehweb_encoding'),
             'idehweb-lwp',
             'idehweb-lwp',
-            ['label_for' => 'lwp_netgsm_encoding', 'class' => 'ilwplabel lwp-gateways related_to_netgsm']
+            array(
+                'label_for' => 'lwp_netgsm_encoding',
+                'class' => 'ilwplabel lwp-gateways related_to_netgsm'
+            )
         );
     }
 
@@ -152,7 +185,6 @@ class lwp_netgsm
             !isset($options['lwp_netgsm_from']) ||
             empty($options['lwp_netgsm_from'])
         ) {
-            error_log('LWP Netgsm Plugin: Missing Netgsm credentials in settings.');
             return false;
         }
 
@@ -176,34 +208,35 @@ class lwp_netgsm
         $url = 'https://api.netgsm.com.tr/sms/rest/v2/otp';
 
         // Prepare data as per the provided example
-        $data = [
-            "usercode" => $username,
-            "msgheader" => $from,
-            "messages" => [
-                [
-                    "msg" => $message,
-                    "no" => $phone_number
-                ]
-            ],
-            "encoding" => $encoding, // TR, EN or UTF-8
-            "iysfilter" => "", // Optional
-            "partnercode" => "" // Optional
-        ];
-print_r($data);
+        $data = array(
+            'usercode' => $username,
+            'msgheader' => $from,
+            'messages' => array(
+                array(
+                    'msg' => $message,
+                    'no' => $phone_number
+                )
+            ),
+            'encoding' => $encoding,
+            'iysfilter' => '',
+            'partnercode' => ''
+        );
 
         // Make POST request with JSON and Basic Auth
-        $response = wp_safe_remote_post($url, [
-            'timeout' => 60,
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
-            ],
-            'body' => json_encode($data)
-        ]);
+        $response = wp_safe_remote_post(
+            $url,
+            array(
+                'timeout' => 60,
+                'headers' => array(
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
+                ),
+                'body' => wp_json_encode($data)
+            )
+        );
 
         // Check for errors
         if (is_wp_error($response)) {
-            error_log('LWP Netgsm Plugin: HTTP Error - ' . $response->get_error_message());
             return false;
         }
 
@@ -212,21 +245,18 @@ print_r($data);
 
         // Parse JSON response
         $result = json_decode($body, true);
-print_r($result);
-        // Log response for debugging
-//        if ($response_code === 200) {
-//            // Check if code is "00" (success) as per documentation
-//            if (isset($result['code']) && $result['code'] === '00') {
-//                return $result;
-//            } else {
-//                $error_msg = isset($result['description']) ? $result['description'] : 'Unknown error';
-//                error_log('LWP Netgsm Plugin: API Error - Code: ' . ($result['code'] ?? 'N/A') . ' Description: ' . $error_msg);
-//                return false;
-//            }
-//        } else {
-//            error_log('LWP Netgsm Plugin: HTTP Error - Response Code: ' . $response_code . ' Body: ' . $body);
-//            return false;
-//        }
+
+        // Check response
+        if ($response_code === 200) {
+            // Check if code is "00" (success) as per documentation
+            if (isset($result['code']) && $result['code'] === '00') {
+                return $result;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -236,8 +266,10 @@ print_r($result);
     {
         $options = get_option('idehweb_lwp_settings');
         $value = isset($options['lwp_netgsm_username']) ? esc_attr($options['lwp_netgsm_username']) : '';
-        echo '<input type="text" name="idehweb_lwp_settings[lwp_netgsm_username]" id="lwp_netgsm_username" class="regular-text" value="' . $value . '" />';
-        echo '<p class="description">' . __('Enter your Netgsm Username', 'lwp-netgsm') . '</p>';
+        ?>
+        <input type="text" name="idehweb_lwp_settings[lwp_netgsm_username]" id="lwp_netgsm_username" class="regular-text" value="<?php echo esc_attr($value); ?>" />
+        <p class="description"><?php esc_html_e('Enter your Netgsm Username', 'login-with-phone-number'); ?></p>
+        <?php
     }
 
     /**
@@ -247,8 +279,10 @@ print_r($result);
     {
         $options = get_option('idehweb_lwp_settings');
         $value = isset($options['lwp_netgsm_password']) ? esc_attr($options['lwp_netgsm_password']) : '';
-        echo '<input type="password" name="idehweb_lwp_settings[lwp_netgsm_password]" id="lwp_netgsm_password" class="regular-text" value="' . $value . '" />';
-        echo '<p class="description">' . __('Enter your Netgsm Password', 'lwp-netgsm') . '</p>';
+        ?>
+        <input type="password" name="idehweb_lwp_settings[lwp_netgsm_password]" id="lwp_netgsm_password" class="regular-text" value="<?php echo esc_attr($value); ?>" />
+        <p class="description"><?php esc_html_e('Enter your Netgsm Password', 'login-with-phone-number'); ?></p>
+        <?php
     }
 
     /**
@@ -258,8 +292,10 @@ print_r($result);
     {
         $options = get_option('idehweb_lwp_settings');
         $value = isset($options['lwp_netgsm_from']) ? esc_attr($options['lwp_netgsm_from']) : '';
-        echo '<input type="text" name="idehweb_lwp_settings[lwp_netgsm_from]" id="lwp_netgsm_from" class="regular-text" value="' . $value . '" />';
-        echo '<p class="description">' . __('Enter your Sender Name/Header (msgheader) approved by Netgsm', 'lwp-netgsm') . '</p>';
+        ?>
+        <input type="text" name="idehweb_lwp_settings[lwp_netgsm_from]" id="lwp_netgsm_from" class="regular-text" value="<?php echo esc_attr($value); ?>" />
+        <p class="description"><?php esc_html_e('Enter your Sender Name/Header (msgheader) approved by Netgsm', 'login-with-phone-number'); ?></p>
+        <?php
     }
 
     /**
@@ -269,8 +305,10 @@ print_r($result);
     {
         $options = get_option('idehweb_lwp_settings');
         $value = isset($options['lwp_netgsm_message']) ? esc_attr($options['lwp_netgsm_message']) : 'Your verification code: ${code}';
-        echo '<input type="text" name="idehweb_lwp_settings[lwp_netgsm_message]" id="lwp_netgsm_message" class="regular-text" value="' . $value . '" />';
-        echo '<p class="description">' . __('Enter your message template. Use ${code} as placeholder for the OTP code.', 'lwp-netgsm') . '</p>';
+        ?>
+        <input type="text" name="idehweb_lwp_settings[lwp_netgsm_message]" id="lwp_netgsm_message" class="regular-text" value="<?php echo esc_attr($value); ?>" />
+        <p class="description"><?php esc_html_e('Enter your message template. Use ${code} as placeholder for the OTP code.', 'login-with-phone-number'); ?></p>
+        <?php
     }
 
     /**
@@ -282,11 +320,11 @@ print_r($result);
         $value = isset($options['lwp_netgsm_encoding']) ? esc_attr($options['lwp_netgsm_encoding']) : 'TR';
         ?>
         <select name="idehweb_lwp_settings[lwp_netgsm_encoding]" id="lwp_netgsm_encoding">
-            <option value="TR" <?php selected($value, 'TR'); ?>>TR (Türkçe)</option>
-            <option value="EN" <?php selected($value, 'EN'); ?>>EN (İngilizce)</option>
-            <option value="UTF-8" <?php selected($value, 'UTF-8'); ?>>UTF-8</option>
+            <option value="TR" <?php selected($value, 'TR'); ?>><?php esc_html_e('TR (Türkçe)', 'login-with-phone-number'); ?></option>
+            <option value="EN" <?php selected($value, 'EN'); ?>><?php esc_html_e('EN (İngilizce)', 'login-with-phone-number'); ?></option>
+            <option value="UTF-8" <?php selected($value, 'UTF-8'); ?>><?php esc_html_e('UTF-8', 'login-with-phone-number'); ?></option>
         </select>
-        <p class="description"><?php _e('Select message encoding type', 'lwp-netgsm'); ?></p>
+        <p class="description"><?php esc_html_e('Select message encoding type', 'login-with-phone-number'); ?></p>
         <?php
     }
 }

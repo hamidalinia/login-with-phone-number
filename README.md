@@ -2,12 +2,12 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 6.8
-Stable tag: 1.8.66
+Stable tag: 1.8.68
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
 
-Passwordless OTP login for WordPress. Let users login or register with phone number via SMS or Firebase. No password needed. Compatible with WooCommerce. GDPR-compliant.
+Passwordless OTP login for WordPress. Let users login or register with phone number via SMS or Firebase. No password needed. Compatible with WooCommerce.
 
 == Description ==
 
