@@ -24,7 +24,7 @@ require_once plugin_dir_path(__FILE__) . 'inc/helper-functions.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/class-lwp-custom-api.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-drpayamak/lwp-drpayamak.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-kavenegar/lwp-kavenegar.php';
-require_once plugin_dir_path(__FILE__) . 'gateways/lwp-twilio/lwp-twilio.php';
+//require_once plugin_dir_path(__FILE__) . 'gateways/lwp-twilio/lwp-twilio.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-netgsm/lwp-netgsm.php';
 
 
