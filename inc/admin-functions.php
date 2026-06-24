@@ -1415,17 +1415,23 @@ trait Admin_Functions
                     $locale = get_locale();
                     if ($locale == 'fa_IR') {
                         ?>
-                        <a style="margin-top: 10px;display:block"
-                           href="<?php echo esc_url("https://webruno.ir/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?>"
+<!--                        <a style="margin-top: 10px;display:block"-->
+<!--                           href="--><?php //echo esc_url("https://webruno.ir/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?><!--"-->
+<!--                           target="_blank">-->
+<!--                            <img style="width: 100%;max-width: 100%"-->
+<!--                                 src="--><?php //echo esc_url(plugins_url('../images/web-design.gif', __FILE__)) ?><!--"/>-->
+<!--                        </a>-->
+<!--                        <a style="margin-top: 10px;display:block"-->
+<!--                           href="--><?php //echo esc_url("https://idehweb.ir/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%86%D9%8F%D8%B5%D8%A8-%D8%A7%D9%81%D8%B2%D9%88%D9%86%D9%87-%D9%88%D8%B1%D9%88%D8%AF-%D8%A8%D8%A7-%D8%B4%D9%85%D8%A7%D8%B1%D9%87-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%AF"); ?><!--"-->
+<!--                           target="_blank">-->
+<!--                            <img style="width: 100%;max-width: 100%"-->
+<!--                                 src="--><?php //echo esc_url(plugins_url('../images/login-with-phone-number-for-iran.gif', __FILE__)) ?><!--"/>-->
+<!--                        </a>-->
+
+                        <a href="<?php echo esc_url("https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('../images/web-design.gif', __FILE__)) ?>"/>
-                        </a>
-                        <a style="margin-top: 10px;display:block"
-                           href="<?php echo esc_url("https://idehweb.ir/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%86%D9%8F%D8%B5%D8%A8-%D8%A7%D9%81%D8%B2%D9%88%D9%86%D9%87-%D9%88%D8%B1%D9%88%D8%AF-%D8%A8%D8%A7-%D8%B4%D9%85%D8%A7%D8%B1%D9%87-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%AF"); ?>"
-                           target="_blank">
-                            <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-for-iran.gif', __FILE__)) ?>"/>
+                                 src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-en-final1.gif', (__FILE__))) ?>"/>
                         </a>
 
 <!--                        <a style="margin-top: 10px;display:block"-->
@@ -1438,24 +1444,24 @@ trait Admin_Functions
                         <?php
                     } else {
                         ?>
-                        <a style="margin-bottom: 10px;display:block"
-                           href="<?php echo esc_url("https://webruno.com/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?>"
-                           target="_blank">
-                            <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('../images/webdesign.gif', __FILE__)) ?>"/>
-                        </a>
+<!--                        <a style="margin-bottom: 10px;display:block"-->
+<!--                           href="--><?php //echo esc_url("https://webruno.com/?utm_source=lwp-plugin&utm_medium=banner-plugin-lwp&utm_campaign=plugin-install"); ?><!--"-->
+<!--                           target="_blank">-->
+<!--                            <img style="width: 100%;max-width: 100%"-->
+<!--                                 src="--><?php //echo esc_url(plugins_url('../images/webdesign.gif', __FILE__)) ?><!--"/>-->
+<!--                        </a>-->
                         <a href="<?php echo esc_url("https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install"); ?>"
                            target="_blank">
                             <img style="width: 100%;max-width: 100%"
                                  src="<?php echo esc_url(plugins_url('../images/login-with-phone-number-en-final1.gif', (__FILE__))) ?>"/>
                         </a>
 
-                        <a style="margin-top: 10px;display:block"
-                           href="<?php echo esc_url("https://idehweb.com/product/nodeeweb-wordpress-theme/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?>"
-                           target="_blank">
-                            <img style="width: 100%;max-width: 100%"
-                                 src="<?php echo esc_url(plugins_url('../images/nodeeweb-wordpress-theme.png', (__FILE__))) ?>"/>
-                        </a>
+<!--                        <a style="margin-top: 10px;display:block"-->
+<!--                           href="--><?php //echo esc_url("https://idehweb.com/product/nodeeweb-wordpress-theme/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?><!--"-->
+<!--                           target="_blank">-->
+<!--                            <img style="width: 100%;max-width: 100%"-->
+<!--                                 src="--><?php //echo esc_url(plugins_url('../images/nodeeweb-wordpress-theme.png', (__FILE__))) ?><!--"/>-->
+<!--                        </a>-->
                         <?php
                     }
                     ?>

@@ -2,8 +2,8 @@
 /*
 Plugin Name: OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
-Description: Login with phone number - sending sms - activate user by phone number - limit pages to login - register and login with ajax - modal
-Version: 1.8.63
+Description: Passwordless OTP login for WordPress. Login or register with phone number via SMS or Firebase. Compatible with WooCommerce. GDPR-compliant.
+Version: 1.8.64
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/
 Text Domain: login-with-phone-number
@@ -24,6 +24,8 @@ require_once plugin_dir_path(__FILE__) . 'inc/helper-functions.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/class-lwp-custom-api.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-drpayamak/lwp-drpayamak.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-kavenegar/lwp-kavenegar.php';
+require_once plugin_dir_path(__FILE__) . 'gateways/lwp-twilio/lwp-twilio.php';
+require_once plugin_dir_path(__FILE__) . 'gateways/lwp-netgsm/lwp-netgsm.php';
 
 
 class idehwebLwp
