@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.61','all');
+            '1.8.71','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.61','all');
+            '1.8.71','all');
     }
 
     function admin_footer()
@@ -812,6 +812,18 @@ trait Admin_Functions
 		<p class="description">' . esc_html__('enter length of activation code', 'login-with-phone-number') . '</p>';
 
     }
+
+    function setting_idehweb_otp_max_attempts()
+    {
+        $options = get_option('idehweb_lwp_settings');
+
+        if (!isset($options['idehweb_otp_max_attempts'])) $options['idehweb_otp_max_attempts'] = '5';
+
+        echo '<input type="number" min="1" max="20" name="idehweb_lwp_settings[idehweb_otp_max_attempts]" class="regular-text" value="' . esc_attr($options['idehweb_otp_max_attempts']) . '" />
+		<p class="description">' . esc_html__('max wrong OTP attempts before the code is invalidated and user must request a new one', 'login-with-phone-number') . '</p>';
+
+    }
+
     function setting_idehweb_login_message()
     {
         $options = get_option('idehweb_lwp_settings');
@@ -1169,6 +1181,7 @@ trait Admin_Functions
         add_settings_field('idehweb_password_login', __('Enable password login', 'login-with-phone-number'), array(&$this, 'setting_idehweb_password_login'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-form-settings']);
         add_settings_field('idehweb_redirect_url', __('Enter redirect url', 'login-with-phone-number'), array(&$this, 'setting_idehweb_url_redirect'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-general-settings']);
         add_settings_field('idehweb_length_of_activation_code', __('Enter length of activation code', 'login-with-phone-number'), array(&$this, 'setting_idehweb_length_of_activation_code'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-general-settings']);
+        add_settings_field('idehweb_otp_max_attempts', __('Max OTP attempts', 'login-with-phone-number'), array(&$this, 'setting_idehweb_otp_max_attempts'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-general-settings']);
         add_settings_field('idehweb_login_message', __('Enter login message', 'login-with-phone-number'), array(&$this, 'setting_idehweb_login_message'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-general-settings']);
         add_settings_field('idehweb_use_phone_number_for_username', __('use phone number for username', 'login-with-phone-number'), array(&$this, 'idehweb_use_phone_number_for_username'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel lwp-tab-general-settings']);
         add_settings_field('idehweb_default_username', __('Default username', 'login-with-phone-number'), array(&$this, 'setting_default_username'), 'idehweb-lwp', 'idehweb-lwp', ['label_for' => '', 'class' => 'ilwplabel related_to_upnfu lwp-tab-general-settings']);

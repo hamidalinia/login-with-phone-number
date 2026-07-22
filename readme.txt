@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 1.8.70
+Stable tag: 1.8.71
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -189,6 +189,10 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 
 == Changelog ==
 
+= 1.8.71 =
+* Security fix: added rate limiting and lockout on OTP verification (login, registration, email activation) — code is now invalidated after too many wrong attempts, and max attempts is configurable in General settings
+* Reset attempt counter whenever a fresh OTP is issued
+
 = 1.8.65 =
 * Enable show form on checkout page
 
@@ -237,6 +241,9 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 * Added option to store phone numbers without country code
 
 == Upgrade Notice ==
+
+= 1.8.71 =
+Security fix: OTP brute-force protection. Update recommended for all users.
 
 = 1.8.63 =
 Recommended update for all users.

@@ -504,6 +504,7 @@ trait Helper_Functions
 
         update_user_meta($user_id, 'activation_code', $six_digit_random_number);
         update_user_meta($user_id, 'activation_code_timestamp', time());
+        update_user_meta($user_id, 'lwp_otp_attempts', 0);
         if ($send_email) {
             $wp_mail = wp_mail($contact, __('Activation code', 'login-with-phone-number'), __('your activation code: ', 'login-with-phone-number') . $six_digit_random_number);
             return $wp_mail;
