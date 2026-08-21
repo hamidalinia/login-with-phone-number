@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.71','all');
+            '1.8.72','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.71','all');
+            '1.8.72','all');
     }
 
     function admin_footer()
@@ -1017,7 +1017,7 @@ trait Admin_Functions
         echo '<label><input type="checkbox" name="idehweb_lwp_settings[idehweb_show_form_all_pages]" class="idehweb_show_form_all_pages" value="1"' . (($options['idehweb_show_form_all_pages']) ? ' checked="checked"' : '') . ' />' . esc_html__('I want the login/register form to show on all pages', 'login-with-phone-number') . '</label>';
 
     }
-    public function check_sms_gateway_configuration_notice($page)
+    public function check_sms_gateway_configuration_notice($page = null)
     {
         // Get the settings
         $options = get_option('idehweb_lwp_settings');

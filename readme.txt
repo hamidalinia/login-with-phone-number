@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 1.8.71
+Stable tag: 1.8.72
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -188,6 +188,9 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.72 =
+* Fix: resolved a fatal ArgumentCountError in check_sms_gateway_configuration_notice() that could occur when third-party notice-management plugins re-triggered the admin_notices hook without passing the expected argument. The $page parameter now has a default value, so the function can safely run with zero arguments.
 
 = 1.8.71 =
 * Security fix: added rate limiting and lockout on OTP verification (login, registration, email activation) — code is now invalidated after too many wrong attempts, and max attempts is configurable in General settings
