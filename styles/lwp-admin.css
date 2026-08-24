@@ -578,3 +578,33 @@ textarea[name="idehweb_lwp_settings[idehweb_custom_api_smstext]"]
         margin: 15px;
     }
 }
+
+.lwp-pro-upsell-card {
+    max-width: 100%;
+    padding: 18px 16px;
+    margin-top: 10px;
+    border: 1px solid #009b9a;
+    border-radius: 8px;
+    background: #f4fbfb;
+    text-align: center;
+}
+.lwp-pro-upsell-card p {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: #1d3b3a;
+    line-height: 1.5;
+}
+.lwp-pro-upsell-card .button-secondary {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 5px;
+    border: 1px solid #009b9a;
+    background: #ffffff;
+    color: #009b9a;
+    font-weight: 600;
+    text-decoration: none;
+}
+.lwp-pro-upsell-card .button-secondary:hover {
+    background: #009b9a;
+    color: #ffffff;
+}

@@ -108,6 +108,7 @@ trait Frontend_Functions
     function enqueue_scripts()
     {
         $options = get_option('idehweb_lwp_settings');
+        if (!is_array($options)) $options = [];
         if (!isset($options['idehweb_redirect_url'])) $options['idehweb_redirect_url'] = home_url();
         if (!isset($options['idehweb_default_gateways'])) $options['idehweb_default_gateways'] = ['custom'];
         if (!isset($options['idehweb_use_custom_gateway'])) $options['idehweb_use_custom_gateway'] = '1';
@@ -137,21 +138,21 @@ trait Frontend_Functions
         );
 
         wp_enqueue_style('idehweb-lwp', plugins_url('/styles/login-with-phonenumber.css', dirname(__FILE__)),
-            array(), '1.8.72', 'all');
+            array(), '1.8.73', 'all');
 
 
-        wp_enqueue_script('idehweb-lwp-validate-script', plugins_url('/scripts/jquery.validate.js', dirname(__FILE__)), array('jquery'), '1.8.72', true);
+        wp_enqueue_script('idehweb-lwp-validate-script', plugins_url('/scripts/jquery.validate.js', dirname(__FILE__)), array('jquery'), '1.8.73', true);
 
 
-        wp_enqueue_script('idehweb-lwp', plugins_url('/scripts/login-with-phonenumber.js', dirname(__FILE__)), array('jquery'), '1.8.72', true);
+        wp_enqueue_script('idehweb-lwp', plugins_url('/scripts/login-with-phonenumber.js', dirname(__FILE__)), array('jquery'), '1.8.73', true);
 
 
         if ($options['idehweb_use_custom_gateway'] == '1' && in_array('firebase', $options['idehweb_default_gateways'])) {
-            wp_enqueue_script('lwp-google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.8.72', true);
-            wp_enqueue_script('lwp-firebase', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js', array(), '1.8.72', true);
-            wp_enqueue_script('lwp-firebase-auth', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js', array(), '1.8.72', true);
+            wp_enqueue_script('lwp-google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.8.73', true);
+            wp_enqueue_script('lwp-firebase', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js', array(), '1.8.73', true);
+            wp_enqueue_script('lwp-firebase-auth', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js', array(), '1.8.73', true);
 
-            wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.72', true);
+            wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.73', true);
 
             $localize['firebase_api'] = $options['idehweb_firebase_api'];
         }
@@ -169,8 +170,10 @@ trait Frontend_Functions
         // get allowed countries
         $onlyCountries = [];
         $options = get_option('idehweb_lwp_settings');
+        if (!is_array($options)) $options = [];
         if (!isset($options['idehweb_country_codes'])) $options['idehweb_country_codes'] = ["uk"];
         if (!isset($options['idehweb_country_codes_default'])) $options['idehweb_country_codes_default'] = "";
+        if (!isset($options['idehweb_hide_country_prefix'])) $options['idehweb_hide_country_prefix'] = "0";
         $country_codes = $this->get_country_code_options();
         foreach ($country_codes as $country) {
             $rr = in_array($country["code"], $options['idehweb_country_codes']);
@@ -181,18 +184,19 @@ trait Frontend_Functions
         $initialCountry = in_array($initialCountry, $onlyCountries) ? $initialCountry : '';
 
         $lwp_settings_localization = get_option('idehweb_lwp_settings_localization');
+        if (!is_array($lwp_settings_localization)) $lwp_settings_localization = [];
         if (!isset($lwp_settings_localization['idehweb_localization_disable_placeholder'])) $lwp_settings_localization['idehweb_localization_disable_placeholder'] = "0";
         $idehweb_localization_disable_placeholder = ($lwp_settings_localization['idehweb_localization_disable_placeholder'] == "1");
 
         wp_enqueue_style('lwp-intltelinput-style', plugins_url('/styles/intlTelInput.min.css', dirname(__FILE__)),
             array(),
-            '1.8.72',
+            '1.8.73',
             'all');
         wp_add_inline_style('lwp-intltelinput-style', '.iti { width: 100%; }#lwp_username{font-size: 20px;}');
 //
         wp_enqueue_script('lwp-intltelinput-script',
             plugins_url('/scripts/intlTelInput.min.js', dirname(__FILE__)),
-            array(), '1.8.72', true);
+            array(), '1.8.73', true);
 // Inline initialization
         wp_add_inline_script(
             'lwp-intltelinput-script',
@@ -206,7 +210,8 @@ trait Frontend_Functions
                     autoPlaceholder:"' . ($idehweb_localization_disable_placeholder ? "off" : "polite") . '",
                     onlyCountries: ' . wp_json_encode($onlyCountries) . ',
                     initialCountry: "' . esc_html($initialCountry) . '",
-                });
+                    allowDropdown: ' . ($options['idehweb_hide_country_prefix'] == '1' ? 'false' : 'true') . ',
+                 });
             }
         });
     })();'
@@ -223,7 +228,9 @@ trait Frontend_Functions
         ), $atts));
         ob_start();
         $options = get_option('idehweb_lwp_settings');
+        if (!is_array($options)) $options = [];
         $localizationoptions = get_option('idehweb_lwp_settings_localization');
+        if (!is_array($localizationoptions)) $localizationoptions = [];
 
         if (class_exists(LWP_PRO::class)) {
 //            $LWP_PRO = new LWP_PRO;
@@ -234,7 +241,7 @@ trait Frontend_Functions
         if (!isset($options['idehweb_sms_login'])) $options['idehweb_sms_login'] = '1';
         if (!isset($options['idehweb_enable_accept_terms_and_condition'])) $options['idehweb_enable_accept_terms_and_condition'] = '1';
         if (!isset($options['idehweb_term_and_conditions_link'])) $options['idehweb_term_and_conditions_link'] = '#';
-        if (!isset($options['idehweb_term_and_conditions_text'])) $options['idehweb_term_and_conditions_text'] = __('By submitting, you agree to the Terms and Privacy Policy', 'login-with-phone-number');
+        if (!isset($options['idehweb_term_and_conditions_text'])) $options['idehweb_term_and_conditions_text'] = __('By submitting, you agree to the {terms_link} and {privacy_link}', 'login-with-phone-number');
         else $options['idehweb_term_and_conditions_text'] = ($options['idehweb_term_and_conditions_text']);
         if (!isset($options['idehweb_term_and_conditions_default_checked'])) $options['idehweb_term_and_conditions_default_checked'] = '0';
         if (!isset($options['idehweb_email_login'])) $options['idehweb_email_login'] = '1';
@@ -382,8 +389,11 @@ trait Frontend_Functions
         ), $atts));
         ob_start();
         $options = get_option('idehweb_lwp_settings');
+        if (!is_array($options)) $options = [];
         $localizationoptions = get_option('idehweb_lwp_settings_localization');
+        if (!is_array($localizationoptions)) $localizationoptions = [];
         $idehweb_pro = get_option('idehweb_lwp_settings_registration_fields');
+        if (!is_array($idehweb_pro)) $idehweb_pro = [];
 
 
         if (!isset($idehweb_pro['idehweb_registration_fields_status'])) $idehweb_pro['idehweb_registration_fields_status'] = '0';
@@ -399,7 +409,8 @@ trait Frontend_Functions
         if (!isset($options['idehweb_sms_login'])) $options['idehweb_sms_login'] = '1';
         if (!isset($options['idehweb_enable_accept_terms_and_condition'])) $options['idehweb_enable_accept_terms_and_condition'] = '1';
         if (!isset($options['idehweb_term_and_conditions_link'])) $options['idehweb_term_and_conditions_link'] = '#';
-        if (!isset($options['idehweb_term_and_conditions_text'])) $options['idehweb_term_and_conditions_text'] = __('By submitting, you agree to the Terms and Privacy Policy', 'login-with-phone-number');
+        if (!isset($options['idehweb_privacy_policy_link'])) $options['idehweb_privacy_policy_link'] = '#';
+        if (!isset($options['idehweb_term_and_conditions_text'])) $options['idehweb_term_and_conditions_text'] = __('By submitting, you agree to the {terms_link} and {privacy_link}', 'login-with-phone-number');
         else $options['idehweb_term_and_conditions_text'] = ($options['idehweb_term_and_conditions_text']);
         if (!isset($options['idehweb_term_and_conditions_default_checked'])) $options['idehweb_term_and_conditions_default_checked'] = '0';
         if (!isset($options['idehweb_email_login'])) $options['idehweb_email_login'] = '1';
@@ -496,9 +507,11 @@ trait Frontend_Functions
                             <div class="accept_terms_and_conditions">
                                 <input class="required lwp_check_box" type="checkbox" name="lwp_accept_terms"
                                     <?php echo(($options['idehweb_term_and_conditions_default_checked'] == '1') ? 'checked="checked"' : ''); ?>>
-                                <a href="<?php echo esc_url($options['idehweb_term_and_conditions_link']); ?>">
-                                    <span class="accept_terms_and_conditions_text"><?php echo esc_html($options['idehweb_term_and_conditions_text']); ?></span>
-                                </a>
+                                <span class="accept_terms_and_conditions_text"><?php
+                                    $terms_anchor = '<a href="' . esc_url($options['idehweb_term_and_conditions_link']) . '" target="_blank">' . esc_html__('Terms', 'login-with-phone-number') . '</a>';
+                                    $privacy_anchor = '<a href="' . esc_url($options['idehweb_privacy_policy_link']) . '" target="_blank">' . esc_html__('Privacy Policy', 'login-with-phone-number') . '</a>';
+                                    echo wp_kses_post(str_replace(['{terms_link}', '{privacy_link}'], [$terms_anchor, $privacy_anchor], $options['idehweb_term_and_conditions_text']));
+                                    ?></span>
                             </div>
                         <?php } ?>
                         <div class="lwp_otp_gateways">
@@ -579,16 +592,22 @@ trait Frontend_Functions
                         <label class="lwp_labels"
                                for="lwp_email"><?php echo esc_html__('Your email:', 'login-with-phone-number'); ?></label>
                         <input type="email" class="required lwp_email the_lwp_input" name="lwp_email"
-                               placeholder="<?php echo esc_attr__('Please enter your email', 'login-with-phone-number'); ?>">      <?php if ($options['idehweb_enable_accept_terms_and_condition'] == '1') { ?>
+                               placeholder="<?php echo esc_attr__('Please enter your email', 'login-with-phone-number'); ?>">
+
+                        <?php if ($options['idehweb_enable_accept_terms_and_condition'] == '1') { ?>
                             <div class="accept_terms_and_conditions">
 
                                 <input class="required lwp_check_box lwp_accept_terms_email" type="checkbox"
                                        name="lwp_accept_terms_email" <?php echo(($options['idehweb_term_and_conditions_default_checked'] == '1') ? 'checked="checked"' : ''); ?> >
-                                <a href="<?php echo esc_url($options['idehweb_term_and_conditions_link']); ?>">
-                                    <span class="accept_terms_and_conditions_text"><?php echo esc_html($options['idehweb_term_and_conditions_text']); ?></span>
-                                </a>
+                                <span class="accept_terms_and_conditions_text"><?php
+                                    $terms_anchor = '<a href="' . esc_url($options['idehweb_term_and_conditions_link']) . '" target="_blank">' . esc_html__('Terms', 'login-with-phone-number') . '</a>';
+                                    $privacy_anchor = '<a href="' . esc_url($options['idehweb_privacy_policy_link']) . '" target="_blank">' . esc_html__('Privacy Policy', 'login-with-phone-number') . '</a>';
+                                    echo wp_kses_post(str_replace(['{terms_link}', '{privacy_link}'], [$terms_anchor, $privacy_anchor], $options['idehweb_term_and_conditions_text']));
+                                    ?></span>
                             </div>
                         <?php } ?>
+
+
                         <button class="submit_button auth_email" type="submit">
                             <?php echo esc_html__('Submit', 'login-with-phone-number'); ?>
                         </button>
@@ -616,6 +635,7 @@ trait Frontend_Functions
 
                             if (class_exists(LWP_PRO::class)) {
                                 $ROptions = get_option('idehweb_lwp_settings_registration_fields');
+                                if (!is_array($ROptions)) $ROptions = [];
                                 if (!isset($ROptions['idehweb_registration_fields'])) $ROptions['idehweb_registration_fields'] = [];
                                 foreach ($ROptions['idehweb_registration_fields'] as $key => $fi) {
 //                                    print_r($fi);
@@ -729,6 +749,7 @@ trait Frontend_Functions
 
                             if (class_exists(LWP_PRO::class)) {
                                 $ROptions = get_option('idehweb_lwp_settings_registration_fields');
+                                if (!is_array($ROptions)) $ROptions = [];
                                 if (!isset($ROptions['idehweb_registration_fields'])) $ROptions['idehweb_registration_fields'] = [];
                                 foreach ($ROptions['idehweb_registration_fields'] as $key => $fi) {
 //                                    print_r($fi['children']);
@@ -856,10 +877,12 @@ trait Frontend_Functions
             </div>
             <?php
         } else {
-            if ($options['idehweb_redirect_url'])
-                wp_redirect(esc_url($options['idehweb_redirect_url']));
-            else if ($options['idehweb_login_message'])
+            if ($options['idehweb_redirect_url']) {
+                wp_safe_redirect(esc_url_raw($options['idehweb_redirect_url']));
+                exit();
+            } else if ($options['idehweb_login_message']) {
                 echo esc_html($options['idehweb_login_message']);
+            }
             ?>
 
             <?php

@@ -1,8 +1,8 @@
 === OTP Login With Phone Number, OTP Verification ===
 Contributors: glboy
 Requires at least: 5.9
-Tested up to: 7.0
-Stable tag: 1.8.72
+Tested up to: 7.1
+Stable tag: 1.8.73
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -188,6 +188,16 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.73 =
+* Fix: Default Role setting was not saving — the select field's name attribute was being stripped for non-PRO users, so the chosen role never reached the database
+* Fix: PHP 8.1+ deprecation notice (array offset on false) when reading localization settings before they've ever been saved
+* Fix: "Sync old WooCommerce users billing phone" button now shows a loading/success/error state instead of appearing unresponsive
+* New: separate Privacy Policy link field, independent from the Terms & Conditions link
+* New: option to hide the country-code selector entirely, for sites serving a single country/locale
+* Improvement: replaced the large promotional banner on the settings page with a smaller, less intrusive upgrade card
+* Improvement: switched wp_redirect() to wp_safe_redirect() (with proper exit()) in the login redirect flow
+
 
 = 1.8.72 =
 * Fix: resolved a fatal ArgumentCountError in check_sms_gateway_configuration_notice() that could occur when third-party notice-management plugins re-triggered the admin_notices hook without passing the expected argument. The $page parameter now has a default value, so the function can safely run with zero arguments.

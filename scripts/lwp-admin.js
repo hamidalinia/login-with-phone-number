@@ -283,11 +283,16 @@ jQuery(document).ready(function ($) {
 
             }
         });
+    jQuery('#idehweb_hide_country_prefix').on('change', function () {
+        jQuery('.lwp-hide-prefix-note').toggle(this.checked);
+    });
+
     jQuery('.ilwplabel').on('click', '.lwp-merge-combine-users', function (e) {
         e.preventDefault();
+        var $btn = jQuery(this);
+        var originalText = $btn.text();
+        $btn.prop('disabled', true).text('Syncing...');
 
-        console.log("click on optimize and tunning users")
-        // return
         $.ajax({
             dataType: 'json',
             url: lwp_admin_vars.ajaxurl,
@@ -296,11 +301,18 @@ jQuery(document).ready(function ($) {
                 'nonce': lwp_admin_vars?.nonce,
             },
             success: function (data) {
-
-
+                $btn.text('Synced ✓');
+                setTimeout(function () {
+                    $btn.prop('disabled', false).text(originalText);
+                }, 3000);
+            },
+            error: function () {
+                $btn.text('Sync failed, try again');
+                setTimeout(function () {
+                    $btn.prop('disabled', false).text(originalText);
+                }, 3000);
             }
         });
-
     })
     jQuery('.lwp-tabs-list').on('click', '.lwp-tab-item', function (e) {
 
