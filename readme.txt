@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 7.1
-Stable tag: 1.8.73
+Stable tag: 1.8.74
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -47,8 +47,7 @@ Works seamlessly with WordPress and is fully compatible with WooCommerce login, 
 * **Firebase** — free OTP via Google Firebase (recommended for international sites)
 * **Twilio** — international SMS gateway, free to configure
 * **Netgsm** — Turkey SMS gateway
-* **Kavenegar** — popular Iranian SMS gateway
-* **DrPayamak** — Iranian SMS gateway
+* **Webruno SMS** — free Iranian SMS gateway, powered by Webruno
 * **Custom API** — connect any SMS gateway using your own URL, headers, and body config
 
 ### 📱 PRO SMS GATEWAYS
@@ -138,7 +137,7 @@ Unlock advanced features with the [Pro version](https://idehweb.com/product/logi
 Yes. The plugin is fully compatible with WooCommerce. It replaces or extends the login and registration forms on the My Account page, checkout page, and registration forms — all without passwords.
 
 = Which SMS gateways are free? =
-Firebase, Kavenegar, DrPayamak, and Custom API are all free. Firebase is recommended for international sites. You can also connect any SMS provider yourself using the Custom API option.
+Firebase, Twilio, Webruno SMS, and Custom API are all free. Firebase is recommended for international sites. You can also connect any SMS provider yourself using the Custom API option.
 
 = Is Firebase free to use? =
 Yes. Firebase OTP is free within Google's usage limits and is the recommended gateway for international sites.
@@ -188,6 +187,9 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.74 =
+* New: added Webruno SMS gateway — free Iranian SMS OTP provider
 
 = 1.8.73 =
 * Fix: Default Role setting was not saving — the select field's name attribute was being stripped for non-PRO users, so the chosen role never reached the database
