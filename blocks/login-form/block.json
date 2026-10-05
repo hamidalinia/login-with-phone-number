@@ -1,0 +1,14 @@
+{
+  "apiVersion": 2,
+  "name": "idehweb/login-form",
+  "title": "OTP Login Form",
+  "category": "widgets",
+  "icon": "smartphone",
+  "description": "Show the phone number OTP login/register form.",
+  "attributes": {
+    "redirect_url": { "type": "string", "default": "" }
+  },
+  "supports": { "html": false },
+  "textdomain": "login-with-phone-number",
+  "editorScript": "file:./index.js"
+}
