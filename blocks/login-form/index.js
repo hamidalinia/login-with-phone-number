@@ -1,3 +1,4 @@
+//blocks/login-form/index.js
 ( function ( blocks, element, blockEditor, components, i18n ) {
     var el = element.createElement;
     var __ = i18n.__;

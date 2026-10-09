@@ -39,13 +39,13 @@ trait Admin_Functions
             plugins_url('/styles/lwp-admin.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.73','all');
+            '1.8.76','all');
 
         wp_enqueue_style('idehweb-lwp-admin-select2-style',
             plugins_url('/styles/select2.min.css',
                 dirname(__FILE__)),
             array(),
-            '1.8.73','all');
+            '1.8.76','all');
     }
 
     function admin_footer()
@@ -421,10 +421,11 @@ trait Admin_Functions
         $gateways = [
             ["value" => "firebase","isFree" => true, "label" => __("Firebase - Google", 'login-with-phone-number')],
             ["value" => "custom","isFree" => true, "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
-            ["value" => "msg91", "label" => __("Msg91 (PRO)", 'login-with-phone-number')],
+            ["value" => "kwtsms","isFree" => true, "label" => __("kwtSMS", 'login-with-phone-number')],
+            ["value" => "msg91","isFree" => true, "label" => __("Msg91", 'login-with-phone-number')],
             ["value" => "webruno", "label" => __("Webruno", 'login-with-phone-number')],
-            ["value" => "drpayamak", "label" => __("Drpayamak (PRO)", 'login-with-phone-number')],
-            ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
+//            ["value" => "drpayamak", "label" => __("Drpayamak (PRO)", 'login-with-phone-number')],
+//            ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
 
             ["value" => "twilio", "label" => __("Twilio (PRO)", 'login-with-phone-number')],
 //            ["value" => "whatsapp", "label" => __("Whatsapp Meta (PRO)", 'login-with-phone-number')],
@@ -432,8 +433,8 @@ trait Admin_Functions
 //            ["value" => "telegram", "label" => __("Telegram (PRO)", 'login-with-phone-number')],
             ["value" => "alibabacloud", "label" => __("Alibabacloud (PRO)", 'login-with-phone-number')],
             ["value" => "2factor", "label" => __("2factor (PRO)", 'login-with-phone-number')],
-            ["value" => "farazsms", "label" => __("Farazsms (PRO)", 'login-with-phone-number')],
-            ["value" => "mellipayamak", "label" => __("Mellipayamak (PRO)", 'login-with-phone-number')],
+//            ["value" => "farazsms", "label" => __("Farazsms (PRO)", 'login-with-phone-number')],
+//            ["value" => "mellipayamak", "label" => __("Mellipayamak (PRO)", 'login-with-phone-number')],
             ["value" => "smsir", "label" => __("SMS.ir (PRO)", 'login-with-phone-number')],
             ["value" => "messageBird", "label" => __("MessageBird (PRO)", 'login-with-phone-number')],
             ["value" => "mshastra", "label" => __("Mshastra (PRO)", 'login-with-phone-number')],

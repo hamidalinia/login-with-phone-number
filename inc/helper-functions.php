@@ -489,9 +489,34 @@ trait Helper_Functions
 //        wp_die();
     }
 
+    function lwp_otp_register_attempt($user_id)
+    {
+        global $wpdb;
+        $key = 'lwp_otp_attempts';
+        add_user_meta($user_id, $key, 0, true); // no-op if it exists
+        $wpdb->query($wpdb->prepare(
+            "UPDATE {$wpdb->usermeta} SET meta_value = meta_value + 1 WHERE user_id = %d AND meta_key = %s",
+            $user_id, $key
+        ));
+        wp_cache_delete($user_id, 'user_meta');
+        return (int) get_user_meta($user_id, $key, true);
+    }
+
     function lwp_generate_token($user_id, $contact, $send_email = false, $method = '')
     {
         $options = get_option('idehweb_lwp_settings');
+
+
+        $last = (int) get_user_meta($user_id, 'activation_code_timestamp', true);
+        if ($last && (time() - $last) < 30) {
+            return false; // min 30s between codes
+        }
+        $gen_key = 'lwp_gen_' . (int)$user_id;
+        $gen_count = (int) get_transient($gen_key);
+        if ($gen_count >= 5) {
+            return false; // max 5 codes/hour/user
+        }
+        set_transient($gen_key, $gen_count + 1, HOUR_IN_SECONDS);
 
         if (!isset($options['idehweb_length_of_activation_code'])) $options['idehweb_length_of_activation_code'] = '6';
 //        $six_digit_random_number = wp_rand(100000, 999999);

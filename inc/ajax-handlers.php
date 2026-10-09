@@ -175,9 +175,13 @@ trait Ajax_Handlers
                     $log = $this->lwp_generate_token($username_exists, $phone_number_with_country_code ? $phone_number_with_country_code : $phone_number, false, $method);
                 }
             }
-            update_user_meta($username_exists, 'activation_code_timestamp', time());
-
             wp_clear_auth_cookie();
+            if ($log === false && !$showPass) {
+                wp_send_json([
+                    'success' => false,
+                    'message' => __('Please wait a little before requesting a new code.', 'login-with-phone-number')
+                ]);
+            }
             wp_send_json([
                 'success' => true,
                 'ID' => $username_exists,
@@ -231,6 +235,17 @@ trait Ajax_Handlers
             $user = get_user_by('ID', $ID);
 
         }
+
+        if (empty($user)) {
+            wp_send_json(['success' => false, 'message' => __('Password is incorrect!', 'login-with-phone-number')]);
+        }
+        $pw_key = 'lwp_pw_' . $user->ID;
+        $pw_tries = (int) get_transient($pw_key);
+        if ($pw_tries >= 10) {
+            wp_send_json(['success' => false, 'message' => __('Too many attempts. Try again later.', 'login-with-phone-number')]);
+        }
+        set_transient($pw_key, $pw_tries + 1, 15 * MINUTE_IN_SECONDS);
+
         $creds = array(
             'user_login' => $user->user_login,
             'user_password' => $password,
@@ -242,12 +257,11 @@ trait Ajax_Handlers
         if (is_wp_error($user)) {
             wp_send_json([
                 'success' => false,
-                'ID' => $user->ID,
-                'err' => $user->get_error_message(),
                 'message' => __('Password is incorrect!', 'login-with-phone-number')
             ]);
 
         } else {
+            delete_transient($pw_key);
 
             wp_send_json([
                 'success' => true,
@@ -786,9 +800,9 @@ trait Ajax_Handlers
                 $lwp_options = get_option('idehweb_lwp_settings');
                 $max_attempts = isset($lwp_options['idehweb_otp_max_attempts']) ? (int) $lwp_options['idehweb_otp_max_attempts'] : 5;
                 if ($max_attempts < 1) $max_attempts = 5;
-                $attempts = (int) get_user_meta($username_exists, 'lwp_otp_attempts', true);
+                $attempts = $this->lwp_otp_register_attempt($username_exists);
 
-                if ($attempts >= $max_attempts) {
+                if ($attempts > $max_attempts) {
                     wp_send_json([
                         'success' => false,
                         'locked' => true,
@@ -803,7 +817,7 @@ trait Ajax_Handlers
                     ]);
                 }
 
-                if ($activation_code == $secod) {
+                if (hash_equals((string)$activation_code, (string)$secod)) {
                     update_user_meta($username_exists, 'lwp_otp_attempts', 0);
                     // First get the user details
                     $user = get_user_by('ID', $username_exists);
@@ -855,8 +869,6 @@ trait Ajax_Handlers
 
 
                 } else {
-                    $attempts++;
-                    update_user_meta($username_exists, 'lwp_otp_attempts', $attempts);
                     if ($attempts >= $max_attempts) {
                         update_user_meta($username_exists, 'activation_code', '');
                     }
@@ -919,18 +931,17 @@ trait Ajax_Handlers
             $lwp_options = get_option('idehweb_lwp_settings');
             $max_attempts = isset($lwp_options['idehweb_otp_max_attempts']) ? (int) $lwp_options['idehweb_otp_max_attempts'] : 5;
             if ($max_attempts < 1) $max_attempts = 5;
-            $attempts = (int) get_user_meta($current_user->ID, 'lwp_otp_attempts', true);
+            $attempts = $this->lwp_otp_register_attempt($current_user->ID);
 
-            if ($attempts >= $max_attempts) {
+            if ($attempts > $max_attempts) {
                 update_user_meta($current_user->ID, 'activation_code', '');
-                update_user_meta($current_user->ID, 'lwp_otp_attempts', 0);
                 wp_send_json([
                     'success' => false,
                     'message' => __('Too many attempts. Please request a new code.', 'login-with-phone-number')
                 ]);
             }
 
-            if ($activation_code == $secod) {
+            if ($activation_code !== '' && hash_equals((string)$activation_code, (string)$secod)) {
                 update_user_meta($current_user->ID, 'lwp_otp_attempts', 0);
 
                 //remove this email from other user
@@ -951,8 +962,6 @@ trait Ajax_Handlers
 
 
             } else {
-                $attempts++;
-                update_user_meta($current_user->ID, 'lwp_otp_attempts', $attempts);
                 if ($attempts >= $max_attempts) {
                     update_user_meta($current_user->ID, 'activation_code', '');
                 }
@@ -1054,6 +1063,12 @@ trait Ajax_Handlers
             $log = $this->lwp_generate_token($ID, $phone_number_with_country_code ? $phone_number_with_country_code : $phone_number, false, $method);
 
 //
+        }
+        if ($log === false) {
+            wp_send_json([
+                'success' => false,
+                'message' => __('Please wait a little before requesting a new code.', 'login-with-phone-number')
+            ]);
         }
         update_user_meta($ID, 'updatedPass', '0');
 
