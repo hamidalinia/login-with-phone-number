@@ -5,6 +5,9 @@ trait Ajax_Handlers
 {
     function idehweb_lwp_merge_old_woocommerce_users()
     {
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Forbidden', 403);
+        }
         if (!isset($_GET['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'lwp_admin_nonce')) {
             wp_die('Busted!');
         }
@@ -507,6 +510,13 @@ trait Ajax_Handlers
             wp_die('Busted!');
         }
 
+        if (!is_user_logged_in()) {
+            wp_send_json([
+                'success' => false,
+                'message' => __('user is not logged in!', 'login-with-phone-number')
+            ]);
+        }
+
         if (!isset($_GET['email']) || empty($_GET['email'])) {
             wp_send_json_error('Email is required');
         }
@@ -520,31 +530,32 @@ trait Ajax_Handlers
 //print_r($current_user);
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $info = array();
-            $info['user_email'] = sanitize_user($email);
-            $user_data = wp_update_user(array('ID' => $current_user->ID, 'user_email' => $info['user_email']));
-
-            if (is_wp_error($user_data)) {
-                if ($user_data->errors['existing_user_email']) {
-                    //set email for this user
-                    update_user_meta($current_user->ID, 'temporary_email', $info['user_email']);
-                    $log = $this->lwp_generate_token($current_user->ID, $email, true);
-                    wp_send_json([
-                        'success' => true,
-                        'ID' => $current_user->ID,
-                        'log' => $log,
-                        'showPass' => false,
-                        'authWithPass' => (bool)(int)$options['idehweb_password_login'],
-                        'email' => $email,
-                        'message' => __('Email sent successfully!', 'login-with-phone-number')
-                    ]);
-
-                }
-
-            } else {
-                // Success!
-                echo 'User profile updated.';
+            $owner = email_exists($email);
+            if ($owner && (int)$owner !== (int)$current_user->ID) {
+                wp_send_json([
+                    'success' => false,
+                    'email' => $email,
+                    'message' => __('This email address is already registered.', 'login-with-phone-number')
+                ]);
             }
+
+            update_user_meta($current_user->ID, 'temporary_email', strtolower($email));
+            $log = $this->lwp_generate_token($current_user->ID, $email, true);
+            if ($log === false) {
+                wp_send_json([
+                    'success' => false,
+                    'message' => __('Please wait a little before requesting a new code.', 'login-with-phone-number')
+                ]);
+            }
+            if (!isset($options['idehweb_password_login'])) $options['idehweb_password_login'] = '1';
+            wp_send_json([
+                'success' => true,
+                'ID' => $current_user->ID,
+                'showPass' => false,
+                'authWithPass' => (bool)(int)$options['idehweb_password_login'],
+                'email' => $email,
+                'message' => __('Email sent successfully!', 'login-with-phone-number')
+            ]);
 
         } else {
             wp_send_json([
@@ -583,25 +594,32 @@ trait Ajax_Handlers
         if (!isset($options['idehweb_store_number_with_country_code'])) $options['idehweb_store_number_with_country_code'] = '1';
         if (!isset($options['idehweb_country_codes_default'])) $options['idehweb_country_codes_default'] = '';
 
+        $phone_number = '';
+        $phone_number_full = '';
         if (isset($_GET['phone_number'])) {
-            $phoneNumber = sanitize_text_field(wp_unslash($_GET['phone_number']));  // Unsplash before sanitization
+            $phoneNumber = sanitize_text_field(wp_unslash($_GET['phone_number']));
 
-            if (preg_replace('/^(\-){0,1}[0-9]+(\.[0-9]+){0,1}/', '', $phoneNumber) == "") {
-                $phone_number = ltrim($phoneNumber, '0');
-                $phone_number = substr($phone_number, 0, 15);
-
-                if ($phone_number < 10) {
-                    wp_send_json([
-                        'success' => false,
-                        'phone_number' => $phone_number,
-                        'message' => __('phone number is wrong!', 'login-with-phone-number')
-                    ]);
-                }
+            if (preg_match('/^[0-9]+$/', $phoneNumber)) {
+                $phone_number = substr(ltrim($phoneNumber, '0'), 0, 15);
             }
+            if (strlen($phone_number) < 10) {
+                wp_send_json([
+                    'success' => false,
+                    'phone_number' => $phone_number,
+                    'message' => __('phone number is wrong!', 'login-with-phone-number')
+                ]);
+            }
+            $phone_number_full = $phone_number; // full number incl. country code, used for Firebase binding
             if ($options['idehweb_store_number_with_country_code'] != '1' && ($options['idehweb_country_codes_default'] != '')) {
                 $country_code = $this->get_country_code_by_code($options['idehweb_country_codes_default']);
 
                 $phone_number = preg_replace('/^' . preg_quote($country_code, '/') . '/', '', $phone_number);
+            }
+            if ($phone_number === '' || $phone_number === null) {
+                wp_send_json([
+                    'success' => false,
+                    'message' => __('phone number is wrong!', 'login-with-phone-number')
+                ]);
             }
             $username_exists = $this->phone_number_exist($phone_number);
         } else if (isset($_GET['email'])) {
@@ -667,19 +685,16 @@ trait Ajax_Handlers
                     wp_send_json([
                         'success' => false,
                         'phone_number' => $phone_number,
-                        'firebase' => $response->error,
+                        'firebase' => (is_object($response) && isset($response->error)) ? $response->error : null,
                         'message' => __('entered code is wrong!', 'login-with-phone-number')
                     ]);
                 } else {
 //                if($response=='true') {
 
                     $firebase_phone = isset($response->phoneNumber) ? ltrim($response->phoneNumber, '+') : '';
-                    $requested_phone = $phone_number;
+                    $requested_phone = $phone_number_full;
 
-                    if (empty($firebase_phone) || (
-                            $firebase_phone !== $requested_phone &&
-                            !str_ends_with($firebase_phone, $requested_phone)
-                        )) {
+                    if (empty($firebase_phone) || empty($requested_phone) || !hash_equals((string)$firebase_phone, (string)$requested_phone)) {
                         wp_send_json([
                             'success' => false,
                             'message' => __('Phone number mismatch. Verification failed.', 'login-with-phone-number')
@@ -726,10 +741,10 @@ trait Ajax_Handlers
 
                 }
             } else if ($options['idehweb_use_custom_gateway'] == '1'
-                && in_array($_GET['method'], $options['idehweb_default_gateways'])
-                && isset($_GET['phone_number'])
                 && isset($_GET['method'])
-                && in_array($_GET['method'], $verification_support_functions)) {
+                && isset($_GET['phone_number'])
+                && in_array($_GET['method'], $options['idehweb_default_gateways'], true)
+                && in_array($_GET['method'], $verification_support_functions, true)) {
                 if (!isset($verificationId)) $verificationId = '';
                 $response = $this->idehweb_lwp_activate_through_firebase($verificationId, $secod);
 //                if ($response->error && $response->error->code == 400) {
@@ -738,25 +753,20 @@ trait Ajax_Handlers
                     wp_send_json([
                         'success' => false,
                         'phone_number' => $phone_number,
-                        'firebase' => $response->error,
+                        'firebase' => (is_object($response) && isset($response->error)) ? $response->error : null,
                         'message' => __('entered code is wrong!', 'login-with-phone-number')
                     ]);
                 } else {
 //                if($response=='true') {
                     // ONLY validate phone number if this is Firebase authentication
-                    if (isset($_GET['method']) && $_GET['method'] === 'firebase') {
-                        $firebase_phone = isset($response->phoneNumber) ? ltrim($response->phoneNumber, '+') : '';
-                        $requested_phone = $phone_number;
+                    $firebase_phone = isset($response->phoneNumber) ? ltrim($response->phoneNumber, '+') : '';
+                    $requested_phone = $phone_number_full;
 
-                        if (empty($firebase_phone) || (
-                                $firebase_phone !== $requested_phone &&
-                                !str_ends_with($firebase_phone, $requested_phone)
-                            )) {
-                            wp_send_json([
-                                'success' => false,
-                                'message' => __('Phone number mismatch. Verification failed.', 'login-with-phone-number')
-                            ]);
-                        }
+                    if (empty($firebase_phone) || empty($requested_phone) || !hash_equals((string)$firebase_phone, (string)$requested_phone)) {
+                        wp_send_json([
+                            'success' => false,
+                            'message' => __('Phone number mismatch. Verification failed.', 'login-with-phone-number')
+                        ]);
                     }
                     $user = get_user_by('ID', $username_exists);
                     if (!is_wp_error($user)) {
@@ -941,11 +951,18 @@ trait Ajax_Handlers
                 ]);
             }
 
-            if ($activation_code !== '' && hash_equals((string)$activation_code, (string)$secod)) {
+            $code_contact = (string)get_user_meta($current_user->ID, 'activation_code_contact', true);
+            if ($activation_code !== ''
+                && is_email($temporary_email)
+                && strtolower($email) === strtolower($temporary_email)
+                && hash_equals(strtolower($temporary_email), $code_contact)
+                && hash_equals((string)$activation_code, (string)$secod)) {
                 update_user_meta($current_user->ID, 'lwp_otp_attempts', 0);
 
-                //remove this email from other user
-                $this->remove_email_from_all_users($temporary_email);
+                $owner = email_exists($temporary_email);
+                if ($owner && (int)$owner !== (int)$current_user->ID) {
+                    wp_send_json(array('success' => false, 'message' => __('This email address is already registered.', 'login-with-phone-number')));
+                }
                 $user = wp_update_user([
                     'ID' => $current_user->ID,
                     'user_email' => $temporary_email
@@ -954,6 +971,8 @@ trait Ajax_Handlers
                     wp_send_json(array('success' => false, 'message' => __('There is problem with activating user.', 'login-with-phone-number'), 'updatedPass' => false, 'authWithPass' => false));
                 }
                 update_user_meta($current_user->ID, 'activation_code', '');
+                delete_user_meta($current_user->ID, 'temporary_email');
+                delete_user_meta($current_user->ID, 'activation_code_contact');
                 if (!isset($options['idehweb_password_login'])) $options['idehweb_password_login'] = '1';
                 $options['idehweb_password_login'] = (bool)(int)$options['idehweb_password_login'];
                 $updatedPass = (bool)(int)get_user_meta($current_user->ID, 'updatedPass', true);
@@ -1034,6 +1053,7 @@ trait Ajax_Handlers
                 'message' => __('Email is wrong!', 'login-with-phone-number')
             ]);
         }
+        $ID = 0;
         if (isset($phone_number) && !isset($email)) {
             $ID = $this->phone_number_exist($phone_number);
         }
@@ -1041,7 +1061,7 @@ trait Ajax_Handlers
         if (!isset($phone_number) && isset($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $ID = email_exists($email);
         }
-        if (!is_numeric($ID)) {
+        if (!is_numeric($ID) || (int)$ID < 1) {
             wp_send_json([
                 'success' => false,
                 'message' => __('Please enter correct user ID', 'login-with-phone-number')
@@ -1074,8 +1094,6 @@ trait Ajax_Handlers
 
         wp_send_json([
             'success' => true,
-            'ID' => $ID,
-            'log' => $log,
             'message' => __('Update password', 'login-with-phone-number')
         ]);
     }
@@ -1091,6 +1109,9 @@ trait Ajax_Handlers
 
     function lwp_set_countries()
     {
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Forbidden', 403);
+        }
         // Verify nonce first before processing any data
         if (!isset($_POST['nonce']) || empty($_POST['nonce'])) {
             wp_send_json([
@@ -1172,22 +1193,25 @@ trait Ajax_Handlers
 
     function phone_number_exist($phone_number)
     {
-        $args = array(
+        $phone_number = is_scalar($phone_number) ? (string)$phone_number : '';
+        if ($phone_number === '' || !ctype_digit($phone_number)) {
+            return 0;
+        }
+        $member_arr = get_users(array(
             'meta_query' => array(
                 array(
                     'key' => 'phone_number',
                     'value' => $phone_number,
                     'compare' => '='
                 )
-            )
-        );
-
-        $member_arr = get_users($args);
-        if ($member_arr && $member_arr[0])
-            return $member_arr[0]->ID;
-        else
-            return 0;
-
+            ),
+            'number' => 2,
+            'fields' => 'ID'
+        ));
+        if (is_array($member_arr) && count($member_arr) === 1) {
+            return (int)$member_arr[0];
+        }
+        return 0;
     }
 
 
@@ -1227,18 +1251,6 @@ trait Ajax_Handlers
         return $options['idehweb_default_nickname'];
     }
 
-    function remove_email_from_all_users($email)
-    {
-        $username_exists = email_exists($email);
-        if ($username_exists) {
-            wp_update_user(
-                [
-                    'ID' => $username_exists,
-                    'user_email' => ''
-                ]
-            );
-        }
-    }
 
     function idehweb_lwp_activate_through_firebase($sessionInfo, $code)
     {

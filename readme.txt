@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 7.1
-Stable tag: 1.8.77
+Stable tag: 1.8.78
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -45,16 +45,17 @@ Works seamlessly with WordPress and is fully compatible with WooCommerce login, 
 ### 📱 FREE SMS GATEWAYS
 
 * **Firebase** — free OTP via Google Firebase (recommended for international sites)
-* **Twilio** — international SMS gateway, free to configure
+* **MSG91** — India SMS gateway
+* **kwtSMS** — Kuwait SMS gateway
 * **Netgsm** — Turkey SMS gateway
 * **Webruno SMS** — free Iranian SMS gateway, powered by Webruno
 * **Custom API** — connect any SMS gateway using your own URL, headers, and body config
 
 ### 📱 PRO SMS GATEWAYS
 
+* Twilio
 * WhatsApp via UltraMessage
 * Telegram
-* MSG91 (India)
 * Alibabacloud
 * MessageBird
 * Trustsignal
@@ -76,7 +77,8 @@ Works seamlessly with WordPress and is fully compatible with WooCommerce login, 
 * Elementor (via shortcode)
 * WPForms (via shortcode)
 * Contact Form 7 (via shortcode)
-* WPBakery, Divi, Gutenberg (via shortcode)
+* Gutenberg (native "OTP Login Form" block)
+* WPBakery, Divi (via shortcode)
 * WPML & Polylang (translation-ready)
 
 ---
@@ -96,7 +98,7 @@ Works seamlessly with WordPress and is fully compatible with WooCommerce login, 
 
 Unlock advanced features with the [Pro version](https://idehweb.com/product/login-with-phone-number-in-wordpress/):
 
-* 15+ additional SMS gateways (Twilio, WhatsApp, Telegram, MSG91, and more)
+* 15+ additional SMS gateways (Twilio, WhatsApp, Telegram, and more)
 * Advanced form builder & UI customization
 * Custom registration fields
 * Default user role assignment
@@ -137,7 +139,7 @@ Unlock advanced features with the [Pro version](https://idehweb.com/product/logi
 Yes. The plugin is fully compatible with WooCommerce. It replaces or extends the login and registration forms on the My Account page, checkout page, and registration forms — all without passwords.
 
 = Which SMS gateways are free? =
-Firebase, Twilio, Webruno SMS, and Custom API are all free. Firebase is recommended for international sites. You can also connect any SMS provider yourself using the Custom API option.
+Firebase, MSG91, kwtSMS, Netgsm, Webruno SMS, and Custom API are free. Firebase is recommended for international sites. You can also connect any SMS provider yourself using the Custom API option.
 
 = Is Firebase free to use? =
 Yes. Firebase OTP is free within Google's usage limits and is the recommended gateway for international sites.
@@ -164,7 +166,7 @@ Yes. Multisite is supported.
 Yes. Custom CSS is supported in the free version. Pro version includes a full style panel — colors, fonts, logo, background, button styles.
 
 = Which page builders are supported? =
-Use the `[idehweb_lwp]` shortcode inside Elementor, WPBakery, Divi, Gutenberg, or any page builder that supports shortcodes.
+Use the `[idehweb_lwp]` shortcode inside Elementor, WPBakery, Divi, or any page builder that supports shortcodes. In the block editor, add the "OTP Login Form" block.
 
 = Can I add extra fields to the registration form? =
 Yes, with the Pro version you can add custom registration fields and collect additional user data on signup.
@@ -187,6 +189,12 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.78 =
+* Security: fixed unauthenticated account takeover via non-numeric phone number lookup and weak Firebase phone-number binding (strict exact match, empty/duplicate phone numbers rejected).
+* Security: fixed email-change OTP reuse; the code must now be issued for the pending email address, and an address owned by another account can no longer be claimed.
+* Security: added capability checks to admin AJAX handlers; profile phone field now validates digits only.
+* New: Gutenberg block for the login form.
 
 = 1.8.76 =
 * Security: fixed OTP brute-force account takeover (atomic attempt limit, code request throttling, constant-time comparison, password login throttling).
@@ -259,6 +267,9 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 * Added option to store phone numbers without country code
 
 == Upgrade Notice ==
+
+= 1.8.78 =
+Critical security fix: unauthenticated account takeover. Update immediately.
 
 = 1.8.71 =
 Security fix: OTP brute-force protection. Update recommended for all users.

@@ -3,7 +3,7 @@
 Plugin Name: OTP Login With Phone Number, OTP Verification
 Plugin URI: https://idehweb.com/product/login-with-phone-number-in-wordpress/
 Description: Passwordless OTP login for WordPress. Login or register with phone number via SMS or Firebase. Compatible with WooCommerce. GDPR-compliant.
-Version: 1.8.77
+Version: 1.8.78
 Author: Hamid Alinia - idehweb
 Author URI: https://idehweb.com/
 Text Domain: login-with-phone-number
@@ -63,11 +63,11 @@ class idehwebLwp
         add_action('woodmart_before_wp_footer', array($this, 'remove_woodmart_default_sidebar'), 1);
 
         add_action('wp_ajax_idehweb_lwp_merge_old_woocommerce_users', array($this, 'idehweb_lwp_merge_old_woocommerce_users'));
-        add_action('wp_ajax_idehweb_lwp_auth_customer', array($this, 'idehweb_lwp_auth_customer'));
-        add_action('wp_ajax_idehweb_lwp_auth_customer_with_website', array($this, 'idehweb_lwp_auth_customer_with_website'));
-        add_action('wp_ajax_idehweb_lwp_activate_customer', array($this, 'idehweb_lwp_activate_customer'));
-        add_action('wp_ajax_idehweb_lwp_check_credit', array($this, 'idehweb_lwp_check_credit'));
-        add_action('wp_ajax_idehweb_lwp_get_shop', array($this, 'idehweb_lwp_get_shop'));
+//        add_action('wp_ajax_idehweb_lwp_auth_customer', array($this, 'idehweb_lwp_auth_customer'));
+//        add_action('wp_ajax_idehweb_lwp_auth_customer_with_website', array($this, 'idehweb_lwp_auth_customer_with_website'));
+//        add_action('wp_ajax_idehweb_lwp_activate_customer', array($this, 'idehweb_lwp_activate_customer'));
+//        add_action('wp_ajax_idehweb_lwp_check_credit', array($this, 'idehweb_lwp_check_credit'));
+//        add_action('wp_ajax_idehweb_lwp_get_shop', array($this, 'idehweb_lwp_get_shop'));
         add_action('wp_ajax_lwp_ajax_login', array($this, 'lwp_ajax_login'));
         add_action('wp_ajax_lwp_update_password_action', array($this, 'lwp_update_password_action'));
         add_action('wp_ajax_lwp_enter_password_action', array($this, 'lwp_enter_password_action'));
@@ -103,6 +103,8 @@ class idehwebLwp
             return true;
         }, 1);
         add_filter('learn_press_locate_template', array($this, 'lwp_addon_learnpress_login'), 1, 3);
+        add_filter('option_idehweb_lwp_settings', function ($v) { return is_array($v) ? $v : []; });
+        add_filter('option_idehweb_lwp_settings_styles', function ($v) { return is_array($v) ? $v : []; });
     }
     public function add_lwp_body_class($classes) {
         $classes[] = 'lwp-enabled';

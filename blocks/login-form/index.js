@@ -5,13 +5,18 @@
 
     blocks.registerBlockType( 'idehweb/login-form', {
         edit: function ( props ) {
+            var blockProps = blockEditor.useBlockProps();
             return el(
-                components.Placeholder,
-                {
-                    icon: 'smartphone',
-                    label: __( 'OTP Login Form', 'login-with-phone-number' ),
-                },
-                el( 'p', {}, __( 'The phone number login/register form will appear here on the frontend.', 'login-with-phone-number' ) )
+                'div',
+                blockProps,
+                el(
+                    components.Placeholder,
+                    {
+                        icon: 'smartphone',
+                        label: __( 'OTP Login Form', 'login-with-phone-number' ),
+                    },
+                    el( 'p', {}, __( 'The phone number login/register form will appear here on the frontend.', 'login-with-phone-number' ) )
+                )
             );
         },
         save: function () {
