@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 7.1
-Stable tag: 1.8.78
+Stable tag: 1.8.79
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -189,6 +189,13 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.79 =
+* Security: fixed a profile phone-number takeover. Users can no longer set or change their own login phone number from the profile page; only administrators can, and a number already used by another account is rejected.
+* Security: the "Sync old WooCommerce users billing phone" tool now skips numbers that are invalid or already used by another account.
+* Fix: when a phone number is attached to more than one account, login no longer creates additional empty accounts for it. The request is refused and the user is asked to contact the site administrator.
+* Note for site administrators: because of the issue above, check for phone numbers shared by several accounts and resolve them manually. Run this query (adjust the table prefix if yours is not wp_): SELECT meta_value, COUNT(*) c FROM wp_usermeta WHERE meta_key='phone_number' GROUP BY meta_value HAVING c > 1;
+* Note: the phone number field on the profile page is now read-only for non-administrators.
 
 = 1.8.78 =
 * Security: fixed unauthenticated account takeover via non-numeric phone number lookup and weak Firebase phone-number binding (strict exact match, empty/duplicate phone numbers rejected).

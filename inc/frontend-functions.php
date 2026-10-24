@@ -69,6 +69,7 @@ trait Frontend_Functions
                            name="phone_number"
                            value="<?php echo esc_attr($phn); ?>"
                            class="regular-text"
+                        <?php echo current_user_can('manage_options') ? '' : 'readonly="readonly"'; ?>
                     />
 
                 </td>
@@ -79,6 +80,8 @@ trait Frontend_Functions
 
     function lwp_update_phonenumber_field($user_id)
     {
+        $user_id = (int)$user_id;
+
         if (!current_user_can('edit_user', $user_id)) {
             return false;
         }
@@ -94,6 +97,19 @@ trait Frontend_Functions
         }
 
         $phone_number = sanitize_text_field(wp_unslash($_POST['phone_number']));
+        $current_number = (string)get_user_meta($user_id, 'phone_number', true);
+
+        // Unchanged value: nothing to do (also lets non-admins save their profile normally).
+        if ($phone_number === $current_number) {
+            return;
+        }
+
+        // Only administrators may add, change or remove a login phone number.
+        // A number is a login credential; users must not self-assign one without proving ownership.
+        if (!current_user_can('manage_options')) {
+            return false;
+        }
+
         if ($phone_number === '') {
             delete_user_meta($user_id, 'phone_number');
             return;
@@ -101,6 +117,12 @@ trait Frontend_Functions
         if (!ctype_digit($phone_number)) {
             return false;
         }
+
+        // Uniqueness: refuse a number already held by any other account.
+        if ($this->phone_number_holders($phone_number, $user_id) > 0) {
+            return false;
+        }
+
         update_user_meta($user_id, 'phone_number', $phone_number);
     }
     function lwp_custom_css()
@@ -145,21 +167,21 @@ trait Frontend_Functions
         );
 
         wp_enqueue_style('idehweb-lwp', plugins_url('/styles/login-with-phonenumber.css', dirname(__FILE__)),
-            array(), '1.8.78', 'all');
+            array(), '1.8.79', 'all');
 
 
-        wp_enqueue_script('idehweb-lwp-validate-script', plugins_url('/scripts/jquery.validate.js', dirname(__FILE__)), array('jquery'), '1.8.78', true);
+        wp_enqueue_script('idehweb-lwp-validate-script', plugins_url('/scripts/jquery.validate.js', dirname(__FILE__)), array('jquery'), '1.8.79', true);
 
 
-        wp_enqueue_script('idehweb-lwp', plugins_url('/scripts/login-with-phonenumber.js', dirname(__FILE__)), array('jquery'), '1.8.78', true);
+        wp_enqueue_script('idehweb-lwp', plugins_url('/scripts/login-with-phonenumber.js', dirname(__FILE__)), array('jquery'), '1.8.79', true);
 
 
         if ($options['idehweb_use_custom_gateway'] == '1' && in_array('firebase', $options['idehweb_default_gateways'])) {
-            wp_enqueue_script('lwp-google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.8.78', true);
-            wp_enqueue_script('lwp-firebase', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js', array(), '1.8.78', true);
-            wp_enqueue_script('lwp-firebase-auth', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js', array(), '1.8.78', true);
+            wp_enqueue_script('lwp-google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.8.79', true);
+            wp_enqueue_script('lwp-firebase', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js', array(), '1.8.79', true);
+            wp_enqueue_script('lwp-firebase-auth', 'https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js', array(), '1.8.79', true);
 
-            wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.78', true);
+            wp_enqueue_script('lwp-firebase-sender', plugins_url('/scripts/firebase-sender.js', dirname(__FILE__)), array('jquery'), '1.8.79', true);
 
             $localize['firebase_api'] = $options['idehweb_firebase_api'];
         }
@@ -197,13 +219,13 @@ trait Frontend_Functions
 
         wp_enqueue_style('lwp-intltelinput-style', plugins_url('/styles/intlTelInput.min.css', dirname(__FILE__)),
             array(),
-            '1.8.78',
+            '1.8.79',
             'all');
         wp_add_inline_style('lwp-intltelinput-style', '.iti { width: 100%; }#lwp_username{font-size: 20px;}');
 //
         wp_enqueue_script('lwp-intltelinput-script',
             plugins_url('/scripts/intlTelInput.min.js', dirname(__FILE__)),
-            array(), '1.8.78', true);
+            array(), '1.8.79', true);
 // Inline initialization
         wp_add_inline_script(
             'lwp-intltelinput-script',

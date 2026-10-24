@@ -20,7 +20,9 @@ trait Ajax_Handlers
             $user_id = $user->ID;
             $billing_phone = get_user_meta($user_id, 'billing_phone', true);
             $billing_phone = str_replace('+', '', $billing_phone);
-            if (!empty($billing_phone)) {
+            if (!empty($billing_phone)
+                && ctype_digit($billing_phone)
+                && $this->phone_number_holders($billing_phone, $user_id) === 0) {
                 update_user_meta($user_id, 'phone_number', $billing_phone);
             }
         }
@@ -70,6 +72,15 @@ trait Ajax_Handlers
 
             }
             $username_exists = $this->phone_number_exist($phone_number);
+            if (!$username_exists && $this->phone_number_holders($phone_number) > 1) {
+                // Number is held by several accounts: never auto-create another one.
+                wp_send_json([
+                    'success' => false,
+                    'phone_number' => $username,
+                    'message' => __('This phone number cannot be used to log in. Please contact the site administrator.', 'login-with-phone-number')
+                ]);
+            }
+//            $registration = get_site_option('registration');
 //            $registration = get_site_option('registration');
             if (!isset($options['idehweb_default_role'])) $options['idehweb_default_role'] = "";
 //            echo $options['idehweb_default_role'];
@@ -1213,7 +1224,33 @@ trait Ajax_Handlers
         }
         return 0;
     }
-
+    /**
+     * Number of users holding this phone number (capped at 2).
+     * Optionally ignores one user ID (the user being edited).
+     */
+    function phone_number_holders($phone_number, $exclude_user_id = 0)
+    {
+        $phone_number = is_scalar($phone_number) ? (string)$phone_number : '';
+        if ($phone_number === '' || !ctype_digit($phone_number)) {
+            return 0;
+        }
+        $args = array(
+            'meta_query' => array(
+                array(
+                    'key' => 'phone_number',
+                    'value' => $phone_number,
+                    'compare' => '='
+                )
+            ),
+            'number' => 2,
+            'fields' => 'ID'
+        );
+        if ($exclude_user_id) {
+            $args['exclude'] = array((int)$exclude_user_id);
+        }
+        $found = get_users($args);
+        return is_array($found) ? count($found) : 0;
+    }
 
     function generate_username($defU = '')
     {
