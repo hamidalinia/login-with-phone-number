@@ -608,3 +608,18 @@ textarea[name="idehweb_lwp_settings[idehweb_custom_api_smstext]"]
     background: #009b9a;
     color: #ffffff;
 }
+/* Free vs PRO comparison card */
+.lwp-compare-card{border:1px solid #009b9a;border-radius:10px;background:#fff;padding:16px;margin-top:10px;box-sizing:border-box}
+.lwp-compare-card h3{margin:0 0 10px;font-size:15px;color:#0b4f4e}
+.lwp-compare-page{max-width:760px;padding:22px}
+.lwp-compare-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.lwp-compare-table th,.lwp-compare-table td{padding:7px 6px;border-bottom:1px solid #e6f2f2;text-align:center;vertical-align:middle}
+.lwp-compare-table th:first-child,.lwp-compare-table td:first-child{text-align:start;width:58%;line-height:1.4}
+.lwp-compare-table .lwp-cmp-pro-col{background:#f1fbfa;font-weight:600}
+.lwp-cmp-yes{color:#00a32a;font-weight:700;font-size:15px}
+.lwp-cmp-no{color:#a7aaad}
+.lwp-cmp-note{font-size:11px;color:#50575e}
+.lwp-compare-soon{margin:12px 0;padding:10px 12px;border-radius:8px;background:#f6f7f7;font-size:12px}
+.lwp-compare-soon ul{margin:6px 0 0;padding-inline-start:18px;list-style:disc}
+.lwp-compare-cta{display:block!important;text-align:center;margin-top:6px!important}
+.lwp-compare-page .lwp-compare-table{font-size:14px}

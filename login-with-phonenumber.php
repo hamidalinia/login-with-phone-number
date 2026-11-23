@@ -22,6 +22,7 @@ require_once plugin_dir_path(__FILE__) . 'inc/frontend-functions.php';
 require_once plugin_dir_path(__FILE__) . 'inc/ajax-handlers.php';
 require_once plugin_dir_path(__FILE__) . 'inc/helper-functions.php';
 require_once plugin_dir_path(__FILE__) . 'inc/block-functions.php';
+require_once plugin_dir_path(__FILE__) . 'inc/upsell-functions.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/class-lwp-custom-api.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-webruno/lwp-webruno.php';
 require_once plugin_dir_path(__FILE__) . 'gateways/lwp-drpayamak/lwp-drpayamak.php';
@@ -38,6 +39,7 @@ class idehwebLwp
     use Frontend_Functions;
     use Ajax_Handlers;
     use Helper_Functions;
+    use Upsell_Functions;
     use Block_Functions;
 
     function __construct()
@@ -48,6 +50,8 @@ class idehwebLwp
         add_action('admin_menu', array($this, 'admin_menu'));
         add_action('admin_footer', array($this, 'admin_footer'));
         add_action('admin_notices', array($this, 'check_sms_gateway_configuration_notice'));
+        add_action('admin_notices', array($this, 'lwp_upgrade_notice'));
+        add_action('admin_init', array($this, 'lwp_maybe_hide_upsell'));
         add_action('admin_enqueue_scripts', array($this, 'lwp_load_wp_media_files'));
         add_action('wp_ajax_lwp_media_get_image', array($this, 'lwp_media_get_image'));
         add_filter('body_class', array($this, 'add_lwp_body_class'));

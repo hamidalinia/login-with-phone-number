@@ -17,6 +17,7 @@ trait Admin_Functions
         );
         $page_hook_styles = add_submenu_page('idehweb-lwp', __('Style settings', 'login-with-phone-number'), __('Style Settings', 'login-with-phone-number'), 'manage_options', 'idehweb-lwp-styles', array(&$this, 'style_settings_page'));
         add_submenu_page('idehweb-lwp', __('Text & localization', 'login-with-phone-number'), __('Text & localization', 'login-with-phone-number'), 'manage_options', 'idehweb-lwp-localization', array(&$this, 'localization_settings_page'));
+        $this->lwp_register_compare_page();
         add_action('admin_print_styles-' . $page_hook, array(&$this, 'admin_custom_css'));
         add_action('admin_print_styles-' . $page_hook_styles, array(&$this, 'admin_custom_css'));
         wp_enqueue_script('idehweb-lwp-admin-select2-js',
@@ -1460,12 +1461,7 @@ trait Admin_Functions
 <!--                            <img style="width: 100%;max-width: 100%"-->
 <!--                                 src="--><?php //echo esc_url(plugins_url('../images/login-with-phone-number-for-iran.gif', __FILE__)) ?><!--"/>-->
 <!--                        </a>-->
-                        <div class="lwp-pro-upsell-card">
-                            <p><?php esc_html_e('Need extra fields, custom styling, or more SMS gateways?', 'login-with-phone-number'); ?></p>
-                            <a class="button-secondary" href="<?php echo esc_url('https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install'); ?>" target="_blank">
-                                <?php esc_html_e('See PRO features', 'login-with-phone-number'); ?>
-                            </a>
-                        </div>
+                        <?php $this->lwp_render_compare_card('sidebar'); ?>
 <!--                        <a href="--><?php //echo esc_url("https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install"); ?><!--"-->
 <!--                           target="_blank">-->
 <!--                            <img style="width: 100%;max-width: 100%"-->
@@ -1494,12 +1490,7 @@ trait Admin_Functions
 <!--                                 src="--><?php //echo esc_url(plugins_url('../images/login-with-phone-number-en-final1.gif', (__FILE__))) ?><!--"/>-->
 <!--                        </a>-->
 
-                        <div class="lwp-pro-upsell-card">
-                            <p><?php esc_html_e('Need extra fields, custom styling, or more SMS gateways?', 'login-with-phone-number'); ?></p>
-                            <a class="button-secondary" href="<?php echo esc_url('https://idehweb.com/product/login-with-phone-number-in-wordpress/?utm_source=lwp-plugin&utm_medium=banner-lwp&utm_campaign=plugin-install'); ?>" target="_blank">
-                                <?php esc_html_e('See PRO features', 'login-with-phone-number'); ?>
-                            </a>
-                        </div>
+                        <?php $this->lwp_render_compare_card('sidebar'); ?>
 
 <!--                        <a style="margin-top: 10px;display:block"-->
 <!--                           href="--><?php //echo esc_url("https://idehweb.com/product/nodeeweb-wordpress-theme/?utm_source=lwp-plugin&utm_medium=banner-nodeeweb&utm_campaign=plugin-install"); ?><!--"-->
