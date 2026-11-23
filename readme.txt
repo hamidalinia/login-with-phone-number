@@ -2,7 +2,7 @@
 Contributors: glboy
 Requires at least: 5.9
 Tested up to: 7.1
-Stable tag: 1.8.79
+Stable tag: 1.8.80
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: otp login, phone number login, sms verification, otp verification, passwordless login
@@ -189,6 +189,10 @@ Through the Patchstack Vulnerability Disclosure Program: [Report a vulnerability
 5. Compatible with WooCommerce checkout
 
 == Changelog ==
+
+= 1.8.80 =
+* New: "Free vs PRO" comparison card in the settings sidebar and a "Free vs PRO" submenu page.
+* New: dismissible upgrade notice shown only on the plugin's own settings pages (hidden for 30 days when dismissed, never shown when PRO is active).
 
 = 1.8.79 =
 * Security: fixed a profile phone-number takeover. Users can no longer set or change their own login phone number from the profile page; only administrators can, and a number already used by another account is rejected.
