@@ -423,12 +423,12 @@ trait Admin_Functions
             ["value" => "firebase","isFree" => true, "label" => __("Firebase - Google", 'login-with-phone-number')],
             ["value" => "custom","isFree" => true, "label" => __("Custom (Config Your Gateway)", 'login-with-phone-number')],
             ["value" => "kwtsms","isFree" => true, "label" => __("kwtSMS", 'login-with-phone-number')],
-            ["value" => "msg91","isFree" => true, "label" => __("Msg91", 'login-with-phone-number')],
             ["value" => "webruno", "label" => __("Webruno", 'login-with-phone-number')],
 //            ["value" => "drpayamak", "label" => __("Drpayamak (PRO)", 'login-with-phone-number')],
 //            ["value" => "kavenegar", "label" => __("Kavenegar (PRO)", 'login-with-phone-number')],
 
             ["value" => "twilio", "label" => __("Twilio (PRO)", 'login-with-phone-number')],
+            ["value" => "msg91", "label" => __("Msg91 (PRO)", 'login-with-phone-number')],
 //            ["value" => "whatsapp", "label" => __("Whatsapp Meta (PRO)", 'login-with-phone-number')],
 //            ["value" => "ultramsg", "label" => __("Ultramsg - Whatsapp third-party (PRO)", 'login-with-phone-number')],
 //            ["value" => "telegram", "label" => __("Telegram (PRO)", 'login-with-phone-number')],

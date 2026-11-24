@@ -45,7 +45,6 @@ Works seamlessly with WordPress and is fully compatible with WooCommerce login, 
 ### 📱 FREE SMS GATEWAYS
 
 * **Firebase** — free OTP via Google Firebase (recommended for international sites)
-* **MSG91** — India SMS gateway
 * **kwtSMS** — Kuwait SMS gateway
 * **Netgsm** — Turkey SMS gateway
 * **Webruno SMS** — free Iranian SMS gateway, powered by Webruno
@@ -54,6 +53,7 @@ Works seamlessly with WordPress and is fully compatible with WooCommerce login, 
 ### 📱 PRO SMS GATEWAYS
 
 * Twilio
+* MSG91
 * WhatsApp via UltraMessage
 * Telegram
 * Alibabacloud
@@ -139,7 +139,7 @@ Unlock advanced features with the [Pro version](https://idehweb.com/product/logi
 Yes. The plugin is fully compatible with WooCommerce. It replaces or extends the login and registration forms on the My Account page, checkout page, and registration forms — all without passwords.
 
 = Which SMS gateways are free? =
-Firebase, MSG91, kwtSMS, Netgsm, Webruno SMS, and Custom API are free. Firebase is recommended for international sites. You can also connect any SMS provider yourself using the Custom API option.
+Firebase, kwtSMS, Netgsm, Webruno SMS, and Custom API are free. Firebase is recommended for international sites. You can also connect any SMS provider yourself using the Custom API option.
 
 = Is Firebase free to use? =
 Yes. Firebase OTP is free within Google's usage limits and is the recommended gateway for international sites.

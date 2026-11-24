@@ -21,10 +21,10 @@ trait Upsell_Functions
         // [label, free, pro]  — true = included, false = not included, string = short note
         return array(
             array(__('Phone number & email OTP login', 'login-with-phone-number'), true, true),
-            array(__('Free gateways: Firebase, MSG91, kwtSMS, Netgsm, Webruno, Custom API', 'login-with-phone-number'), true, true),
+            array(__('Free gateways: Firebase, kwtSMS, Netgsm, Webruno, Custom API', 'login-with-phone-number'), true, true),
             array(__('WooCommerce, shortcode & Gutenberg block', 'login-with-phone-number'), true, true),
             array(__('Resend cooldown & OTP attempt limits', 'login-with-phone-number'), true, true),
-            array(__('Premium gateways: Twilio, WhatsApp, Vonage, SMS.ir, MelliPayamak, FarazSMS…', 'login-with-phone-number'), false, true),
+            array(__('Premium gateways: Twilio, MSG91, WhatsApp, Vonage, SMS.ir, MelliPayamak, FarazSMS…', 'login-with-phone-number'), false, true),
             array(__('Style panel: logo, colors, background, buttons', 'login-with-phone-number'), __('Custom CSS', 'login-with-phone-number'), true),
             array(__('Custom registration fields & default user role', 'login-with-phone-number'), false, true),
             array(__('Priority support', 'login-with-phone-number'), false, true),
